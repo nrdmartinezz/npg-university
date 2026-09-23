@@ -70,7 +70,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
       Skip to content
     </a>
 
-    <Header sticky={sticky} />
+    <Header sticky={sticky} breadcrumbs={breadcrumbs} />
 
     <main id="main" class="flex-1">
       <slot />

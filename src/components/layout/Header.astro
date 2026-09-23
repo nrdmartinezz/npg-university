@@ -1,25 +1,18 @@
 ---
 import { site } from '../../config/site';
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { BreadcrumbEntry } from '../seo/Schema.astro';
 
 export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
 
 interface Props {
   sticky?: HeaderSticky;
+  breadcrumbs?: BreadcrumbEntry[];
 }
 
-const { sticky = 'sticky' } = Astro.props;
+const { sticky = 'sticky', breadcrumbs = [] } = Astro.props;
 
 const menuGroups = [
-  {
-    heading: 'Quick Links',
-    links: [
-      { label: 'On-Demand Courses', href: '/courses/' },
-      { label: 'Curriculum Tracks', href: '/#tracks' },
-      { label: 'Practice Growth Engine', href: '/#engine' },
-      { label: 'Talk With an Advisor', href: '/#advisory' },
-      { label: 'FAQs', href: '/#faq' },
-    ],
-  },
   {
     heading: 'Course Categories',
     links: [
@@ -33,10 +26,26 @@ const menuGroups = [
   {
     heading: 'Programs',
     links: [
-      { label: 'Live Bootcamps', href: '/#advisory' },
-      { label: 'Private Diamond & Platinum Coaching', href: '/#advisory' },
-      { label: 'Mastermind Events', href: '/#advisory' },
-      { label: 'New Patient Group Podcast', href: '/#advisory' },
+      {
+        label: 'Live Bootcamps',
+        href: 'https://newpatientgroup.com/ortho-bootcamps/',
+        external: true,
+      },
+      {
+        label: 'Private Diamond & Platinum Coaching',
+        href: 'https://newpatientgroup.com/private-coaching/',
+        external: true,
+      },
+      {
+        label: 'Mastermind Events',
+        href: 'https://newpatientgroup.com/private-coaching/platinum-level/',
+        external: true,
+      },
+      {
+        label: 'The Brian Wright Show',
+        href: 'https://brianwrightshow.buzzsprout.com/',
+        external: true,
+      },
     ],
   },
 ];
@@ -119,10 +128,12 @@ const menuGroups = [
     </div>
   </div>
 
+  {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+
   <div id="site-menu" hidden class="border-t border-[#e2e8f0] bg-white">
     <nav
       aria-label="Primary"
-      class="mx-auto grid w-full max-w-[1280px] gap-8 px-6 py-8 sm:grid-cols-3"
+      class="mx-auto grid w-full max-w-[1280px] gap-8 px-6 py-8 sm:grid-cols-2"
     >
       {
         menuGroups.map((group) => (
@@ -135,9 +146,12 @@ const menuGroups = [
                 <li>
                   <a
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     class="inline-flex min-h-11 items-center text-sm text-[#334155] no-underline hover:text-[#006194]"
                   >
                     {link.label}
+                    {link.external && <span class="sr-only"> (opens in a new tab)</span>}
                   </a>
                 </li>
               ))}

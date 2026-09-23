@@ -8,7 +8,14 @@ import { navigation } from '../config/navigation';
 import { site } from '../config/site';
 ---
 
-<BaseLayout title="Page not found" noindex>
+<BaseLayout
+  title="Page not found"
+  noindex
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Page not found', href: '/404/' },
+  ]}
+>
   <Section background="base" spacing="lg">
     <Container align="center" gap="md">
       <p class="text-ink-muted text-sm font-semibold tracking-wide uppercase">Error 404</p>

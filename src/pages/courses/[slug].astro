@@ -32,6 +32,7 @@ const { course, courses } = Astro.props;
 const { Content } = await render(course);
 const suggestions = relatedCourses(courses, course);
 const trackNames = course.data.tracks.map((id) => trackById(id)?.label).filter(Boolean);
+const primaryTrack = trackById(course.data.tracks[0]);
 const duration = courseDuration(course.data.includes);
 const lifetime = hasLifetimeAccess(course.data.includes);
 const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
@@ -41,8 +42,11 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
   title={course.data.title}
   description={course.data.description}
   breadcrumbs={[
-    { name: 'Home', href: '/' },
-    { name: 'On-Demand Courses', href: '/courses/' },
+    { name: 'Catalog', href: '/courses/' },
+    { name: 'On-Demand Academy', href: '/' },
+    ...(primaryTrack
+      ? [{ name: primaryTrack.nav, href: `/courses/#${primaryTrack.id}` }]
+      : []),
     { name: course.data.title, href: `/courses/${course.id}/` },
   ]}
 >

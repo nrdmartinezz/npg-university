@@ -1,0 +1,60 @@
+---
+interface Crumb {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="bg-[#0b132b] text-[#f8f9ff]">
+  <ol
+    class="mx-auto flex w-full max-w-[1280px] items-center overflow-x-auto px-6 py-2.5 font-display text-[13px] leading-[18px] whitespace-nowrap"
+  >
+    {
+      items.map((item, index) => (
+        <li class="inline-flex items-center">
+          {index > 0 && (
+            <span class="px-2 text-[#94a3b8]" aria-hidden="true">
+              /
+            </span>
+          )}
+          {index === items.length - 1 ? (
+            <span aria-current="page" class="font-semibold text-white">
+              {item.name}
+            </span>
+          ) : (
+            <a
+              href={item.href}
+              class="inline-flex items-center gap-1.5 font-medium text-[#cbdbf5] no-underline hover:text-white"
+            >
+              {index === 0 && (
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                  class="shrink-0"
+                >
+                  <path
+                    d="M12 7H2M6 3 2 7l4 4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              )}
+              {item.name}
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

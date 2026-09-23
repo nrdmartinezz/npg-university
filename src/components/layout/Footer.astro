@@ -3,16 +3,6 @@ const year = new Date().getFullYear();
 
 const columns = [
   {
-    heading: 'Quick Links',
-    links: [
-      { label: 'On-Demand Courses', href: '/courses/' },
-      { label: 'Live Bootcamps', href: '/#advisory' },
-      { label: 'Private Diamond & Platinum Coaching', href: '/#advisory' },
-      { label: 'Mastermind Events', href: '/#advisory' },
-      { label: 'New Patient Group Podcast', href: '/#advisory' },
-    ],
-  },
-  {
     heading: 'Course Categories',
     links: [
       { label: 'Practice Culture & Leadership', href: '/courses/#leadership' },
@@ -20,6 +10,31 @@ const columns = [
       { label: 'New Patient Experience', href: '/courses/#new-patient-experience' },
       { label: 'Treatment Coordinator Conversion', href: '/courses/#treatment-coordinator' },
       { label: 'Clinical Team', href: '/courses/#clinical-team' },
+    ],
+  },
+  {
+    heading: 'Programs',
+    links: [
+      {
+        label: 'Live Bootcamps',
+        href: 'https://newpatientgroup.com/ortho-bootcamps/',
+        external: true,
+      },
+      {
+        label: 'Private Diamond & Platinum Coaching',
+        href: 'https://newpatientgroup.com/private-coaching/',
+        external: true,
+      },
+      {
+        label: 'Mastermind Events',
+        href: 'https://newpatientgroup.com/private-coaching/platinum-level/',
+        external: true,
+      },
+      {
+        label: 'The Brian Wright Show',
+        href: 'https://brianwrightshow.buzzsprout.com/',
+        external: true,
+      },
     ],
   },
 ];
@@ -68,9 +83,12 @@ const legal = [
                 <li>
                   <a
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     class="inline-flex min-h-10 items-center text-sm leading-6 text-[#cbdbf5] no-underline hover:text-white"
                   >
                     {link.label}
+                    {link.external && <span class="sr-only"> (opens in a new tab)</span>}
                   </a>
                 </li>
               ))}

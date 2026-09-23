@@ -8,7 +8,15 @@ import { site } from '../config/site';
 import { Icon } from 'astro-icon/components';
 ---
 
-<BaseLayout title="Thank you" description="We've received your message." noindex>
+<BaseLayout
+  title="Thank you"
+  description="We've received your message."
+  noindex
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Thank you', href: '/thank-you/' },
+  ]}
+>
   <Section background="base" spacing="lg">
     <Container align="center" gap="md">
       <Icon name="lucide:circle-check" class="text-brand-600 size-14" aria-hidden="true" />
