@@ -8,7 +8,6 @@ const quotes = [
     emphasis: 'Our same-day starts jumped immediately',
     name: 'Dr. Jamie Reynolds',
     role: 'Reynolds Orthodontics • MI',
-    photo: '/images/home/dr-reynolds.png',
   },
   {
     quote:
@@ -16,7 +15,6 @@ const quotes = [
     emphasis: 'It turned our phones into a conversion machine.',
     name: 'Dr. Drew Ferris',
     role: 'Ferris Orthodontics • CA',
-    photo: '/images/home/dr-ferris.png',
   },
   {
     quote:
@@ -24,7 +22,6 @@ const quotes = [
     emphasis: 'The team morale shift alone paid for this ten times over.',
     name: 'Dr. Regina Blevins',
     role: 'Minnesota Orthodontics • MN',
-    photo: '/images/home/dr-blevins.png',
   },
   {
     quote:
@@ -32,7 +29,6 @@ const quotes = [
     emphasis: 'Our staff feels empowered and totally locked into our vision.',
     name: 'Dr. Jep Paschal',
     role: 'Paschal Orthodontics • CA',
-    photo: '/images/home/dr-paschal.png',
   },
 ];
 ---
@@ -75,14 +71,7 @@ const quotes = [
                   {after}”
                 </blockquote>
               </div>
-              <footer class="mt-6 flex items-center gap-3 border-t border-[#e5eeff] pt-5">
-                <img
-                  src={item.photo}
-                  alt=""
-                  width="48"
-                  height="48"
-                  class="size-12 rounded-full object-cover"
-                />
+              <footer class="mt-6 border-t border-[#e5eeff] pt-5">
                 <p>
                   <span class="font-display block text-lg leading-7 font-semibold text-[#0f172a]">
                     {item.name}

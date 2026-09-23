@@ -49,42 +49,18 @@ const { courses } = Astro.props;
       {
         courses.map((course) => (
           <li class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
-            {course.image && (
-              <div class="relative bg-[#0b132b]">
-                <img
-                  src={course.image}
-                  alt={course.imageAlt ?? ''}
-                  width="512"
-                  height="279"
-                  class="aspect-video w-full object-cover object-[center_18%]"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0b132b]/90 via-[#0b132b]/20 to-transparent" />
-                <div class="absolute inset-x-4 bottom-3">
-                  <p class="font-display text-[11px] leading-[14px] font-semibold tracking-[0.55px] text-[#acedff] uppercase">
-                    {course.department}
-                  </p>
-                  <h3 class="font-display mt-1 text-[22px] leading-9 font-semibold tracking-[-0.22px] text-[#f8f9ff]">
-                    <a href={course.href} class="text-inherit no-underline hover:underline">
-                      {course.title}
-                    </a>
-                  </h3>
-                </div>
-              </div>
-            )}
+            <div class="bg-[#0b132b] px-6 pt-16 pb-6">
+              <p class="font-display text-[11px] leading-[14px] font-semibold tracking-[0.55px] text-[#acedff] uppercase">
+                {course.department}
+              </p>
+              <h3 class="font-display mt-1 text-[22px] leading-9 font-semibold tracking-[-0.22px] text-[#f8f9ff]">
+                <a href={course.href} class="text-inherit no-underline hover:underline">
+                  {course.title}
+                </a>
+              </h3>
+            </div>
 
             <div class="flex flex-1 flex-col gap-5 p-6">
-              {!course.image && (
-                <div>
-                  <p class="font-display text-[11px] leading-[14px] font-semibold tracking-[0.55px] text-[#006194] uppercase">
-                    {course.department}
-                  </p>
-                  <h3 class="font-display mt-2 text-[22px] leading-9 font-semibold tracking-[-0.22px] text-[#0f172a]">
-                    <a href={course.href} class="text-inherit no-underline hover:underline">
-                      {course.title}
-                    </a>
-                  </h3>
-                </div>
-              )}
               <p class="text-base leading-7 text-[#64748b]">{course.description}</p>
               {course.includes.length > 0 && (
                 <div class="rounded-xl bg-[#eff4ff] p-5">
