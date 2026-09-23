@@ -1,0 +1,169 @@
+---
+import Glyph from '../home/Glyph.astro';
+import {
+  cardHighlights,
+  courseDuration,
+  formatPrice,
+  hasLifetimeAccess,
+  savingsPercent,
+} from '../../lib/courses';
+
+interface Props {
+  href: string;
+  enrollUrl: string;
+  title: string;
+  subtitle?: string;
+  instructor?: string;
+  price?: number;
+  compareAtPrice?: number;
+  featured?: boolean;
+  image?: string;
+  includes: string[];
+}
+
+const {
+  href,
+  enrollUrl,
+  title,
+  subtitle,
+  instructor,
+  price,
+  compareAtPrice,
+  featured = false,
+  image,
+  includes,
+} = Astro.props;
+
+const highlights = cardHighlights(includes);
+const duration = courseDuration(includes);
+const lifetime = hasLifetimeAccess(includes);
+const savings = savingsPercent(price, compareAtPrice);
+const hook = subtitle || title;
+---
+
+<li
+  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08),0_2px_4px_-2px_rgba(0,0,0,0.06)] transition duration-150 hover:-translate-y-0.5 hover:border-[#2563eb] hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.35)]"
+>
+  <div
+    class="relative flex min-h-36 flex-col justify-end overflow-hidden bg-gradient-to-br from-[#0b132b] via-[#1e293b] to-[#006194] px-6 py-6"
+  >
+    {
+      image && (
+        <img
+          src={image}
+          alt=""
+          width="640"
+          height="280"
+          class="absolute inset-0 h-full w-full object-cover opacity-45"
+        />
+      )
+    }
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-[#0b132b] via-[#0b132b]/75 to-[#0b132b]/25"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative flex flex-col gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        {
+          featured && (
+            <span class="font-display rounded-full bg-[#acedff] px-2.5 py-1 text-[11px] leading-[14px] font-bold tracking-[0.55px] text-[#0b132b] uppercase">
+              Featured
+            </span>
+          )
+        }
+        {
+          savings != null && (
+            <span class="font-display rounded-full bg-[#2563eb] px-2.5 py-1 text-[11px] leading-[14px] font-bold tracking-[0.55px] text-white uppercase">
+              Save {savings}%
+            </span>
+          )
+        }
+        {
+          duration && (
+            <span class="font-display rounded-full bg-white/15 px-2.5 py-1 text-[11px] leading-[14px] font-bold tracking-[0.55px] text-[#f8f9ff] uppercase">
+              {duration}
+            </span>
+          )
+        }
+        {
+          lifetime && (
+            <span class="font-display rounded-full bg-white/15 px-2.5 py-1 text-[11px] leading-[14px] font-bold tracking-[0.55px] text-[#f8f9ff] uppercase">
+              Lifetime access
+            </span>
+          )
+        }
+      </div>
+      <p class="font-display text-lg leading-7 font-semibold text-white">{hook}</p>
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col gap-4 p-6">
+    <div class="flex flex-col gap-2">
+      <h3 class="font-display text-xl leading-8 font-bold tracking-[-0.2px] text-[#0f172a]">
+        <a href={href} class="text-inherit no-underline hover:text-[#006194]">
+          {title}
+        </a>
+      </h3>
+      {
+        instructor && (
+          <p class="text-sm leading-6 text-[#64748b]">
+            Taught by <span class="font-semibold text-[#0f172a]">{instructor}</span>
+          </p>
+        )
+      }
+    </div>
+
+    {
+      highlights.length > 0 && (
+        <ul class="flex flex-col gap-3 rounded-xl bg-[#eff4ff] p-4">
+          {highlights.map((item) => (
+            <li class="flex items-start gap-2 text-sm leading-6 text-[#0f172a]">
+              <Glyph src="/images/home/icon-check.svg" width={15} height={15} class="mt-1" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <div class="mt-auto flex flex-col gap-4 border-t border-[#e5eeff] pt-5">
+      <div>
+        {
+          price != null ? (
+            <p class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+              <span class="font-display text-[28px] leading-9 font-extrabold tracking-[-0.42px] text-[#0f172a]">
+                {formatPrice(price)}
+              </span>
+              {compareAtPrice != null && compareAtPrice > price && (
+                <span class="text-base leading-6 font-semibold text-[#64748b] line-through">
+                  {formatPrice(compareAtPrice)}
+                </span>
+              )}
+            </p>
+          ) : (
+            <p class="text-sm leading-6 text-[#64748b]">Price confirmed at checkout.</p>
+          )
+        }
+      </div>
+      <div class="flex flex-col gap-2 sm:flex-row">
+        <a
+          href={enrollUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display inline-flex min-h-12 flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#2563eb] px-5 text-[15px] leading-5 font-bold tracking-[0.15px] text-white no-underline shadow-[0_10px_15px_-3px_rgba(37,99,235,0.35)] hover:bg-[#1d4ed8] sm:order-2"
+        >
+          Enroll now
+          <Glyph src="/images/home/icon-arrow.svg" width={12} height={12} />
+          <span class="sr-only"> (opens SamCart)</span>
+        </a>
+        <a
+          href={href}
+          class="font-display inline-flex min-h-12 flex-1 items-center justify-center rounded-lg bg-[#006194]/10 px-5 text-[15px] leading-5 font-semibold tracking-[0.15px] text-[#006194] no-underline hover:bg-[#006194]/15 sm:order-1"
+        >
+          See what's inside
+        </a>
+      </div>
+    </div>
+  </div>
+</li>

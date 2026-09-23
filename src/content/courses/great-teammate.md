@@ -4,6 +4,7 @@ description: "Brian Wright examines the attitudes and actions that strengthen a 
 subtitle: "Build a winning team by becoming the teammate everyone wants to have."
 enrollUrl: "https://npguniversity.samcart.com/products/are-you-a-great-teammate-living-life-above-the-line/"
 instructor: "Brian Wright, Founder & CEO"
+price: 90
 tracks:
   - leadership
 positions:

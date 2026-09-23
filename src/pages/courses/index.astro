@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { cardTitle, coursesInTrack, formatPrice, getPublished, tracks } from '../../lib/courses';
+import CourseCard from '../../components/courses/CourseCard.astro';
+import { cardTitle, coursesInTrack, getPublished, tracks } from '../../lib/courses';
 
 const courses = await getPublished();
 const groups = tracks
@@ -79,50 +80,20 @@ const groups = tracks
             </h2>
             <p class="mt-2 text-base leading-6 text-[#64748b]">{group.description}</p>
           </div>
-          <ul class="grid gap-5 lg:grid-cols-2">
+          <ul class="grid gap-6 lg:grid-cols-2">
             {group.courses.map((course) => (
-              <li class="flex flex-col rounded-2xl bg-white p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
-                <h3 class="font-display text-xl leading-7 font-semibold tracking-[-0.2px] text-[#0f172a]">
-                  <a href={`/courses/${course.id}/`} class="text-inherit no-underline hover:text-[#006194]">
-                    {cardTitle(course, group.id)}
-                  </a>
-                </h3>
-                <p class="mt-2 text-base leading-[26px] text-[#64748b]">{course.data.description}</p>
-                {course.data.includes.length > 0 && (
-                  <ul class="mt-4 flex flex-col gap-1 text-sm leading-5 text-[#0f172a]">
-                    {course.data.includes.slice(0, 3).map((item) => (
-                      <li class="flex gap-2">
-                        <span class="text-[#006194]" aria-hidden="true">
-                          ✓
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div class="mt-auto flex flex-wrap items-center gap-3 pt-6">
-                  {course.data.price != null && (
-                    <p class="font-display text-2xl font-extrabold tracking-[-0.3px] text-[#0f172a]">
-                      {formatPrice(course.data.price)}
-                    </p>
-                  )}
-                  <a
-                    href={`/courses/${course.id}/`}
-                    class="font-display inline-flex min-h-11 items-center justify-center rounded-lg bg-[#006194]/10 px-4 text-[13px] leading-[18px] font-semibold tracking-[0.26px] text-[#006194] no-underline hover:bg-[#006194]/15"
-                  >
-                    Course details
-                  </a>
-                  <a
-                    href={course.data.enrollUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="font-display inline-flex min-h-11 items-center justify-center rounded-lg bg-[#2563eb] px-6 text-[13px] leading-[18px] font-bold tracking-[0.26px] text-white no-underline hover:bg-[#1d4ed8]"
-                  >
-                    Enroll
-                    <span class="sr-only"> (opens SamCart)</span>
-                  </a>
-                </div>
-              </li>
+              <CourseCard
+                href={`/courses/${course.id}/`}
+                enrollUrl={course.data.enrollUrl}
+                title={cardTitle(course, group.id)}
+                subtitle={course.data.subtitle}
+                instructor={course.data.instructor}
+                price={course.data.price}
+                compareAtPrice={course.data.compareAtPrice}
+                featured={course.data.featured}
+                image={course.data.image}
+                includes={course.data.includes}
+              />
             ))}
           </ul>
         </div>

@@ -86,3 +86,34 @@ export function formatPrice(amount: number): string {
     maximumFractionDigits: 0,
   }).format(amount);
 }
+
+const genericInclude =
+  /expert guidance|guidance from|4k high-definition|unlimited access|keep this course for life|keep the course forever|lifetime access|yours to keep/i;
+
+/** Outcome-shaped bullets, skipping instructor credits and access boilerplate. */
+export function cardHighlights(includes: string[], limit = 2): string[] {
+  const specific = includes.filter((item) => !genericInclude.test(item));
+  return (specific.length > 0 ? specific : includes).slice(0, limit);
+}
+
+export function hasLifetimeAccess(includes: string[]): boolean {
+  return includes.some((item) => /lifetime|for life|forever|keep this course|keep the course/i.test(item));
+}
+
+/** First stated length, such as "6 hours" or "53 minutes". */
+export function courseDuration(includes: string[]): string | null {
+  for (const item of includes) {
+    const match = item.match(/(\d+(?:\.\d+)?)\+?\s*-?\s*(hours?|minutes?)/i);
+    if (!match) continue;
+    const amount = Number(match[1]);
+    const hours = /hour/i.test(match[2]);
+    const unit = hours ? (amount === 1 ? 'hour' : 'hours') : amount === 1 ? 'minute' : 'minutes';
+    return `${match[1]} ${unit}`;
+  }
+  return null;
+}
+
+export function savingsPercent(price?: number, compareAt?: number): number | null {
+  if (price == null || compareAt == null || compareAt <= price) return null;
+  return Math.round(((compareAt - price) / compareAt) * 100);
+}

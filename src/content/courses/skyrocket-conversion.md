@@ -4,6 +4,8 @@ description: "A 53-minute course with Brian Wright on the psychology mistakes th
 subtitle: "Avoid 12 common and critical mistakes when presenting treatment fees."
 enrollUrl: "https://npguniversity.samcart.com/products/12-critical-mistakes-to-avoid-when-presenting-the-cost-of-treatment/"
 instructor: "Brian Wright, Founder & CEO"
+price: 50
+compareAtPrice: 80
 tracks:
   - treatment-coordinator
 positions:

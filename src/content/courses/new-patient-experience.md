@@ -4,6 +4,7 @@ description: "Nearly 6 hours with Brian Wright on sales, presentation, customer 
 subtitle: "Go beyond new patient expectations and increase conversions and referrals."
 enrollUrl: "https://npguniversity.samcart.com/products/new-patient-experience-course-paid-in-full/"
 instructor: "Brian Wright, Founder & CEO"
+price: 749
 featured: true
 image: "/images/home/course-experience.png"
 imageAlt: "Clinical team welcoming a new patient in a practice lobby"

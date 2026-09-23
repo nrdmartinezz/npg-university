@@ -4,6 +4,7 @@ description: "A 6.5-hour course on exam-room communication, digital technology, 
 subtitle: "Grow revenue, profit, and clear aligner starts."
 enrollUrl: "https://npguniversity.samcart.com/products/clear-aligner-growth-course/"
 instructor: "New Patient Group"
+price: 499
 featured: true
 image: "/images/home/course-financial.png"
 imageAlt: "Treatment coordinator in an exam room conversation with a patient"

@@ -4,6 +4,7 @@ description: "Brian Wright breaks down 12 consumer psychology strategies that sh
 subtitle: "Move more patients from “thinking about it” to “let’s start.”"
 enrollUrl: "https://npguniversity.samcart.com/products/12-ways-to-use-consumer-psychology-to-skyrocket-starts/"
 instructor: "Brian Wright, Founder & CEO"
+price: 90
 tracks:
   - leadership
   - receptionist

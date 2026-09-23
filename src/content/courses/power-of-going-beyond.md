@@ -4,6 +4,7 @@ description: "Brian Wright introduces a mindset shift from meeting expectations 
 subtitle: "Learn to create five-star experiences that drive loyalty, referrals, and growth."
 enrollUrl: "https://npguniversity.samcart.com/products/the-power-of-going-beyond/"
 instructor: "Brian Wright, Founder & CEO"
+price: 50
 tracks:
   - leadership
   - receptionist

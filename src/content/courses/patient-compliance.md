@@ -4,8 +4,7 @@ description: "A six-step scripting course with Brian Wright for the clinical tea
 subtitle: "Increase patient compliance and reduce the chaos of non-compliant patients."
 enrollUrl: "https://npguniversity.samcart.com/products/patient-compliance---six-step-scripting-to-transform-patient-compliance/"
 instructor: "Brian Wright, Founder & CEO"
-price: 75
-compareAtPrice: 150
+price: 900
 tracks:
   - clinical-team
 positions:

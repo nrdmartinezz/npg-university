@@ -4,6 +4,7 @@ description: "Nine consumer psychology concepts that help the team guide callers
 subtitle: "Turn every new patient call into a trusted partnership."
 enrollUrl: "https://npguniversity.samcart.com/products/new-patient-phone-call-leveraging-consumer-psychology/"
 instructor: "Brian Wright, Founder & CEO"
+price: 90
 tracks:
   - receptionist
 positions:

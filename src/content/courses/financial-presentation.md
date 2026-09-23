@@ -4,6 +4,7 @@ description: "Over 5 hours for treatment coordinators on how today’s consumer 
 subtitle: "Transform your TC into a financial presentation expert."
 enrollUrl: "https://npguniversity.samcart.com/products/financial-presentation-course-paid-in-full/"
 instructor: "New Patient Group"
+price: 749
 featured: true
 image: "/images/home/course-financial.png"
 imageAlt: "Treatment coordinator presenting a financial plan to a patient"

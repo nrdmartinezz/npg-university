@@ -4,6 +4,7 @@ description: "Brian Wright’s treatment coordinator course on presenting fees t
 subtitle: "Skyrocket conversion, starts, production, revenue, cash flow, and efficiency."
 enrollUrl: "https://npguniversity.samcart.com/products/money/"
 instructor: "Brian Wright, Founder & CEO"
+price: 375
 tracks:
   - treatment-coordinator
 positions:

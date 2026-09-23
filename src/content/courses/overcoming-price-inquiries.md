@@ -4,6 +4,7 @@ description: "Advanced receptionist phone training and a printable three-step sc
 subtitle: "Price inquiries — advanced dental receptionist phone training and script."
 enrollUrl: "https://npguniversity.samcart.com/products/three-steps-to-overcoming-price-inquiries-on-the-phone/"
 instructor: "Brian Wright, Founder & CEO"
+price: 90
 tracks:
   - receptionist
 positions:

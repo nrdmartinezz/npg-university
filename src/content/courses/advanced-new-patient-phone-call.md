@@ -4,6 +4,7 @@ description: "An 8.5-hour receptionist phone course on sales fundamentals, custo
 subtitle: "Transform your receptionist into the ultimate conversion machine."
 enrollUrl: "https://npguniversity.samcart.com/products/receptionist-phone-training-course/"
 instructor: "New Patient Group"
+price: 749
 featured: true
 image: "/images/home/course-phone.png"
 imageAlt: "Front desk team member on a call in a modern orthodontic office"
