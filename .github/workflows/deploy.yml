@@ -4,44 +4,45 @@ on:
   push:
     branches: [main, staging]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: GitHub environment to deploy
-        type: choice
-        required: true
-        default: staging
-        options:
-          - staging
-          - production
 
 concurrency:
-  group: deploy-${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}
+  group: deploy-staging
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Build and upload
+    name: Deploy staging
     runs-on: ubuntu-latest
-    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}
-    env:
-      # Staging uses FTP_HOST, FTP_USER, FTP_PW, SITE_URL, and ALLOW_INDEXING.
-      # Production can keep the original FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD names.
-      SITE_URL: ${{ vars.SITE_URL || secrets.SITE_URL }}
-      ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING || secrets.ALLOW_INDEXING }}
-      FTP_HOST: ${{ secrets.FTP_HOST || secrets.FTP_SERVER }}
-      FTP_USER: ${{ secrets.FTP_USER || secrets.FTP_USERNAME }}
-      FTP_PW: ${{ secrets.FTP_PW || secrets.FTP_PASSWORD }}
-      FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+    environment: staging
     steps:
       - name: Check deploy settings
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PW: ${{ secrets.FTP_PW }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
         run: |
           missing=0
-          for name in FTP_HOST FTP_USER FTP_PW SITE_URL; do
-            if [ -z "${!name}" ]; then
-              echo "::error title=Missing $name::Add $name to the GitHub environment used by this deploy."
-              missing=1
-            fi
-          done
+          if [ -z "$FTP_HOST" ]; then
+            echo "::error title=Missing FTP_HOST::The staging environment needs an FTP_HOST secret."
+            missing=1
+          fi
+          if [ -z "$FTP_USER" ]; then
+            echo "::error title=Missing FTP_USER::The staging environment needs an FTP_USER secret."
+            missing=1
+          fi
+          if [ -z "$FTP_PW" ]; then
+            echo "::error title=Missing FTP_PW::The staging environment needs an FTP_PW secret."
+            missing=1
+          fi
+          if [ -z "$SITE_URL" ]; then
+            echo "::error title=Missing SITE_URL::The staging environment needs a SITE_URL variable."
+            missing=1
+          fi
+          if [ "$missing" -eq 0 ]; then
+            echo "Staging settings found. Indexing: ${ALLOW_INDEXING:-false}"
+          fi
           exit "$missing"
 
       - uses: actions/checkout@v4
@@ -53,20 +54,18 @@ jobs:
 
       - run: npm ci
 
-      # Gate: a type error or malformed frontmatter must never reach the server.
       - run: npm run verify
 
       - name: Install PHPMailer
         run: composer install --no-dev --working-dir=public/api
 
       - name: Write robots.txt
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
         run: |
           site="${SITE_URL%/}"
-          indexing="${ALLOW_INDEXING}"
-          target="${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}"
-          if [ -z "$indexing" ] && [ "$target" = "staging" ]; then
-            indexing="false"
-          fi
+          indexing="${ALLOW_INDEXING:-false}"
           case "$indexing" in
             false|0|no|off)
               printf 'User-agent: *\nDisallow: /\n' > public/robots.txt
@@ -77,18 +76,20 @@ jobs:
           esac
 
       - name: Build
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
         run: npm run build
 
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ env.FTP_HOST }}
-          username: ${{ env.FTP_USER }}
-          password: ${{ env.FTP_PW }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PW }}
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ env.FTP_SERVER_DIR != '' && env.FTP_SERVER_DIR || './' }}
-          # Keeps anything the server owns that the build does not produce.
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
