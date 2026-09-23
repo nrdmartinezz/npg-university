@@ -1,9 +1,9 @@
 ---
-title: "Advanced Remote Monitoring Exam Room Innovation Course"
-description: "Three essential remote-monitoring talking points from Brian Wright, for practices using it or considering it."
-subtitle: "Three essential talking points to increase starts and revenue."
-enrollUrl: "https://npguniversity.samcart.com/products/remote-monitoring-exam-room-innovation-course/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'Advanced Remote Monitoring Exam Room Innovation Course'
+description: 'Three essential remote-monitoring talking points from Brian Wright, for practices using it or considering it.'
+subtitle: 'Three essential talking points to increase starts and revenue.'
+enrollUrl: 'https://npguniversity.samcart.com/products/remote-monitoring-exam-room-innovation-course/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 250
 compareAtPrice: 500
 tracks:
@@ -12,11 +12,11 @@ positions:
   - track: treatment-coordinator
     order: 11
 includes:
-  - "PDF printable documents you keep"
-  - "Team exercises and role plays"
-  - "4K high-definition video"
-  - "Expert coaching guidance"
-  - "Keep the course forever"
+  - 'PDF printable documents you keep'
+  - 'Team exercises and role plays'
+  - '4K high-definition video'
+  - 'Expert coaching guidance'
+  - 'Keep the course forever'
 ---
 
 Join Founder and CEO Brian Wright for three essential remote-monitoring talking points aimed at conversion, starts, and revenue, and at what the practice is able to charge.

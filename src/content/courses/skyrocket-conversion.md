@@ -1,9 +1,9 @@
 ---
-title: "Skyrocket Conversion – 12 Common & Critical Mistakes to Avoid when Presenting Treatment Fees"
-description: "A 53-minute course with Brian Wright on the psychology mistakes that show up when a team presents the cost of treatment."
-subtitle: "Avoid 12 common and critical mistakes when presenting treatment fees."
-enrollUrl: "https://npguniversity.samcart.com/products/12-critical-mistakes-to-avoid-when-presenting-the-cost-of-treatment/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'Skyrocket Conversion – 12 Common & Critical Mistakes to Avoid when Presenting Treatment Fees'
+description: 'A 53-minute course with Brian Wright on the psychology mistakes that show up when a team presents the cost of treatment.'
+subtitle: 'Avoid 12 common and critical mistakes when presenting treatment fees.'
+enrollUrl: 'https://npguniversity.samcart.com/products/12-critical-mistakes-to-avoid-when-presenting-the-cost-of-treatment/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 50
 compareAtPrice: 80
 tracks:
@@ -12,8 +12,8 @@ positions:
   - track: treatment-coordinator
     order: 4
 includes:
-  - "A 53-minute on-demand course with Brian Wright"
-  - "A course agenda covering the psychology of the fee presentation"
+  - 'A 53-minute on-demand course with Brian Wright'
+  - 'A course agenda covering the psychology of the fee presentation'
 ---
 
 Join Founder and CEO Brian Wright for this 53-minute on-demand course on transforming the financial presentation. The sales page calls it a system for the results you want without the usual headaches.

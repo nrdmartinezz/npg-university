@@ -1,25 +1,25 @@
 ---
-title: "Clear Aligner Growth & Exam Room Innovation"
-description: "A 6.5-hour course on exam-room communication, digital technology, and clear aligner workflows aimed at more starts."
-subtitle: "Grow revenue, profit, and clear aligner starts."
-enrollUrl: "https://npguniversity.samcart.com/products/clear-aligner-growth-course/"
-instructor: "New Patient Group"
+title: 'Clear Aligner Growth & Exam Room Innovation'
+description: 'A 6.5-hour course on exam-room communication, digital technology, and clear aligner workflows aimed at more starts.'
+subtitle: 'Grow revenue, profit, and clear aligner starts.'
+enrollUrl: 'https://npguniversity.samcart.com/products/clear-aligner-growth-course/'
+instructor: 'New Patient Group'
 price: 499
 featured: true
-image: "/images/home/course-financial.png"
-imageAlt: "Treatment coordinator in an exam room conversation with a patient"
+image: '/images/home/course-financial.png'
+imageAlt: 'Treatment coordinator in an exam room conversation with a patient'
 tracks:
   - treatment-coordinator
 positions:
   - track: treatment-coordinator
     order: 3
 includes:
-  - "6.5 hours of on-demand video"
-  - "Access on any internet-accessible device"
-  - "Printable scripts and flowcharts"
-  - "Online testing and progress tracking"
-  - "Role plays and training exercises"
-  - "Lifetime access — yours to keep forever"
+  - '6.5 hours of on-demand video'
+  - 'Access on any internet-accessible device'
+  - 'Printable scripts and flowcharts'
+  - 'Online testing and progress tracking'
+  - 'Role plays and training exercises'
+  - 'Lifetime access — yours to keep forever'
 ---
 
 The sales page positions this course as a way to grow revenue and profit and increase clear aligner starts 15–30% in 12 months.

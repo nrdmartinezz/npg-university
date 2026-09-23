@@ -1,25 +1,25 @@
 ---
-title: "Advanced New Patient Phone Call"
-description: "An 8.5-hour receptionist phone course on sales fundamentals, customer service, value-building, and objection handling for the new patient call."
-subtitle: "Transform your receptionist into the ultimate conversion machine."
-enrollUrl: "https://npguniversity.samcart.com/products/receptionist-phone-training-course/"
-instructor: "New Patient Group"
+title: 'Advanced New Patient Phone Call'
+description: 'An 8.5-hour receptionist phone course on sales fundamentals, customer service, value-building, and objection handling for the new patient call.'
+subtitle: 'Transform your receptionist into the ultimate conversion machine.'
+enrollUrl: 'https://npguniversity.samcart.com/products/receptionist-phone-training-course/'
+instructor: 'New Patient Group'
 price: 749
 featured: true
-image: "/images/home/course-phone.png"
-imageAlt: "Front desk team member on a call in a modern orthodontic office"
+image: '/images/home/course-phone.png'
+imageAlt: 'Front desk team member on a call in a modern orthodontic office'
 tracks:
   - receptionist
 positions:
   - track: receptionist
     order: 3
 includes:
-  - "8.5 hours of on-demand video you keep forever"
-  - "Full access on any internet-connected device"
-  - "More than 6 printable scripts and flowcharts"
-  - "Online testing and progress tracking"
-  - "3 private online coaching sessions for your practice and team"
-  - "Those coaching sessions are recorded and provided to you"
+  - '8.5 hours of on-demand video you keep forever'
+  - 'Full access on any internet-connected device'
+  - 'More than 6 printable scripts and flowcharts'
+  - 'Online testing and progress tracking'
+  - '3 private online coaching sessions for your practice and team'
+  - 'Those coaching sessions are recorded and provided to you'
 ---
 
 Advanced phone training built to increase new patients, same-day starts, and revenue. Competition creates shoppers. This course teaches the team how to turn them into value-based buyers.

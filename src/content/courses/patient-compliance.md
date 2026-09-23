@@ -1,9 +1,9 @@
 ---
-title: "Non-Compliance to Compliance – Advanced Sales Training to Increase Patient Compliance"
-description: "A six-step scripting course with Brian Wright for the clinical team, aimed at transforming patient compliance."
-subtitle: "Increase patient compliance and reduce the chaos of non-compliant patients."
-enrollUrl: "https://npguniversity.samcart.com/products/patient-compliance---six-step-scripting-to-transform-patient-compliance/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'Non-Compliance to Compliance – Advanced Sales Training to Increase Patient Compliance'
+description: 'A six-step scripting course with Brian Wright for the clinical team, aimed at transforming patient compliance.'
+subtitle: 'Increase patient compliance and reduce the chaos of non-compliant patients.'
+enrollUrl: 'https://npguniversity.samcart.com/products/patient-compliance---six-step-scripting-to-transform-patient-compliance/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 900
 tracks:
   - clinical-team
@@ -11,10 +11,10 @@ positions:
   - track: clinical-team
     order: 3
 includes:
-  - "PDF printable documents you keep"
-  - "Team exercises and role plays"
-  - "Expert guidance with Brian Wright"
-  - "Keep the course forever"
+  - 'PDF printable documents you keep'
+  - 'Team exercises and role plays'
+  - 'Expert guidance with Brian Wright'
+  - 'Keep the course forever'
 ---
 
 Advanced six-step scripting to transform patient compliance. The sales page frames the outcome as fewer headaches from non-compliant patients, and states a goal of increasing patient compliance 30% or more.
