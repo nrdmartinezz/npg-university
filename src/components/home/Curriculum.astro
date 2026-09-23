@@ -1,0 +1,160 @@
+---
+import Glyph from './Glyph.astro';
+
+const tracks = [
+  {
+    eyebrow: 'Leadership',
+    title: 'Company Culture & Leadership',
+    body: 'Mindset, teammate standards, and leadership courses for doctors and the whole team.',
+    points: ['Trust vs. Performance', 'Growth vs. Fixed Mindset', 'Living Above the Line'],
+    href: '/courses/#leadership',
+    cta: 'View Leadership Courses',
+    tone: '#006194',
+    wash: 'bg-[#006194]/10',
+    icon: '/images/home/icon-users.svg',
+    iconWidth: 28,
+    iconHeight: 14,
+    check: '/images/home/icon-check.svg',
+    arrow: '/images/home/icon-arrow-sm.svg',
+  },
+  {
+    eyebrow: 'Receptionist / Front Desk',
+    title: 'Phone Mastery & Hospitality',
+    body: 'New patient calls, price inquiries, and the communication models the front desk uses every day.',
+    points: [
+      'Advanced New Patient Phone Call',
+      'Overcoming Telephone Price Inquiries',
+      'The Art of Bragging',
+    ],
+    href: '/courses/#receptionist',
+    cta: 'View Front Desk Courses',
+    tone: '#006194',
+    wash: 'bg-[#006194]/10',
+    icon: '/images/home/icon-headset.svg',
+    iconWidth: 23.333,
+    iconHeight: 21,
+    check: '/images/home/icon-check.svg',
+    arrow: '/images/home/icon-arrow-sm.svg',
+  },
+  {
+    eyebrow: 'Treatment Coordinator',
+    title: 'Financial Presentation & Starts',
+    body: 'Fee presentation, clear aligner exam-room innovation, and the mistakes that stall case acceptance.',
+    points: [
+      'Financial Presentation University',
+      'Clear Aligner Growth',
+      'Remote Monitoring Talking Points',
+    ],
+    href: '/courses/#treatment-coordinator',
+    cta: 'View TC Courses',
+    tone: '#006577',
+    wash: 'bg-[#006577]/15',
+    icon: '/images/home/icon-dollar.svg',
+    iconWidth: 23.333,
+    iconHeight: 23.333,
+    check: '/images/home/icon-check-teal.svg',
+    arrow: '/images/home/icon-arrow-teal.svg',
+  },
+  {
+    eyebrow: 'New Patient Experience',
+    title: 'The New Patient Visit',
+    body: 'The immersive visit, hospitality, and communication training for the day the patient arrives.',
+    points: ['New Patient Immersive Experience', 'The Power of Going Beyond', 'Conflict Resolution'],
+    href: '/courses/#new-patient-experience',
+    cta: 'View Experience Courses',
+    tone: '#2563eb',
+    wash: 'bg-[#2563eb]/10',
+    icon: '/images/home/icon-users.svg',
+    iconWidth: 28,
+    iconHeight: 14,
+    check: '/images/home/icon-check.svg',
+    arrow: '/images/home/icon-arrow-sm.svg',
+  },
+  {
+    eyebrow: 'Clinical Team',
+    title: 'Compliance & Chairside Communication',
+    body: 'Scripting and communication for the clinical team, from compliance to five-star recovery.',
+    points: ['Non-Compliance to Compliance', 'F.A.B. Communication', 'Conflict Resolution'],
+    href: '/courses/#clinical-team',
+    cta: 'View Clinical Courses',
+    tone: '#006577',
+    wash: 'bg-[#006577]/15',
+    icon: '/images/home/icon-headset.svg',
+    iconWidth: 23.333,
+    iconHeight: 21,
+    check: '/images/home/icon-check-teal.svg',
+    arrow: '/images/home/icon-arrow-teal.svg',
+  },
+];
+---
+
+<section id="tracks" class="bg-[#f8f9ff] px-6 py-16" aria-labelledby="tracks-heading">
+  <div class="mx-auto flex w-full max-w-[1280px] flex-col gap-6">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p
+          class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#006194] uppercase"
+        >
+          Comprehensive Academy Framework
+        </p>
+        <h2
+          id="tracks-heading"
+          class="font-display mt-3 text-[clamp(1.875rem,4vw,2.5rem)] leading-[1.3] font-bold tracking-[-0.8px] text-[#0f172a]"
+        >
+          On-Demand Courses by Team
+        </h2>
+        <p class="mt-4 max-w-xl text-base leading-7 text-[#64748b]">
+          Actionable protocols engineered specifically for orthodontic and high-value dental teams.
+        </p>
+      </div>
+      <p
+        class="font-display inline-flex w-fit items-center gap-1 rounded-full bg-[#dce9ff] px-4 py-1 text-[13px] leading-[18px] font-semibold tracking-[0.26px] text-[#006194]"
+      >
+        <Glyph src="/images/home/icon-video.svg" width={14.667} height={12} />
+        Over 250+ Video Modules
+      </p>
+    </div>
+
+    <ul class="grid gap-6 lg:grid-cols-3">
+      {
+        tracks.map((track) => (
+          <li class="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <div class="flex flex-col gap-4">
+              <span
+                class:list={['flex size-12 items-center justify-center rounded-xl', track.wash]}
+              >
+                <Glyph src={track.icon} width={track.iconWidth} height={track.iconHeight} />
+              </span>
+              <p
+                class="font-display text-[11px] leading-[14px] font-bold tracking-[0.55px] uppercase"
+                style={`color:${track.tone}`}
+              >
+                {track.eyebrow}
+              </p>
+              <h3 class="font-display text-[22px] leading-9 font-semibold tracking-[-0.22px] text-[#0f172a]">
+                {track.title}
+              </h3>
+              <p class="text-base leading-7 text-[#64748b]">{track.body}</p>
+              <ul class="flex flex-col gap-3 pt-2">
+                {track.points.map((point) => (
+                  <li class="inline-flex items-center gap-2 text-sm leading-6 text-[#3f4850]">
+                    <Glyph src={track.check} width={15} height={15} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a
+              href={track.href}
+              class="font-display mt-5 inline-flex min-h-11 w-fit items-center gap-1 text-[13px] leading-[18px] font-bold tracking-[0.26px] no-underline"
+              style={`color:${track.tone}`}
+            >
+              {track.cta}
+              <Glyph src={track.arrow} width={10.667} height={10.667} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

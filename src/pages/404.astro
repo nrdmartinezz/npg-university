@@ -31,9 +31,13 @@ import { site } from '../config/site';
 
       <div class="flex flex-wrap justify-center gap-3">
         <Button href="/">Back to home</Button>
-        <Button href={`tel:${site.business.phoneHref}`} variant="secondary">
-          Call {site.business.phone}
-        </Button>
+        {
+          site.business.phone && (
+            <Button href={`tel:${site.business.phoneHref}`} variant="secondary">
+              Call {site.business.phone}
+            </Button>
+          )
+        }
       </div>
     </Container>
   </Section>

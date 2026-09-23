@@ -1,0 +1,74 @@
+---
+import Glyph from './Glyph.astro';
+
+const assurances = [
+  { label: '30-Day Money-Back Guarantee', kind: 'mark' as const },
+  {
+    label: '256-Bit Encrypted Secure Checkout',
+    kind: 'icon' as const,
+    src: '/images/home/icon-lock-cta.svg',
+    width: 12,
+    height: 15.75,
+  },
+  {
+    label: 'Instant Team Activation',
+    kind: 'icon' as const,
+    src: '/images/home/icon-bolt.svg',
+    width: 12,
+    height: 15,
+  },
+];
+---
+
+<section
+  class="bg-gradient-to-r from-[#0b132b] via-[#1e293b] to-[#0b132b] px-6 py-16 text-center text-[#f8f9ff]"
+  aria-labelledby="final-cta-heading"
+>
+  <div class="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-6">
+    <p
+      class="font-display rounded-full bg-[#f8f9ff]/10 px-4 py-1 text-[11px] leading-[14px] font-bold tracking-[0.55px] text-[#cce5ff] uppercase"
+    >
+      Join over 1,200+ practices transforming culture &amp; conversions
+    </p>
+    <h2
+      id="final-cta-heading"
+      class="font-display max-w-3xl text-[clamp(1.875rem,4.5vw,2.75rem)] leading-[1.35] font-bold tracking-[-0.88px]"
+    >
+      Ready to Achieve Your Largest Production Year in Practice History?
+    </h2>
+    <p class="max-w-2xl text-lg leading-8 text-[#cbdbf5]">
+      Enroll your practice into the On-Demand Academy today with lifetime access, or schedule a
+      15-minute consultation to determine the ideal customized roadmap for your team.
+    </p>
+    <div class="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
+      <a
+        href="#advisory"
+        class="font-display inline-flex min-h-12 items-center justify-center rounded-lg bg-[#2563eb] px-10 py-4 text-center text-[15px] leading-5 font-extrabold tracking-[0.15px] text-white no-underline shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] hover:bg-[#1d4ed8]"
+      >
+        Enroll Team in All-Access Pass ($2,499)
+      </a>
+      <a
+        href="#advisory"
+        class="font-display inline-flex min-h-12 items-center justify-center rounded-lg bg-[#f8f9ff]/10 px-6 py-4 text-center text-[15px] leading-5 font-semibold tracking-[0.15px] text-[#f8f9ff] no-underline backdrop-blur-sm hover:bg-[#f8f9ff]/20"
+      >
+        Schedule 15-Min Practice Advisor Call
+      </a>
+    </div>
+    <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-4">
+      {
+        assurances.map((item) => (
+          <li class="font-display inline-flex items-center gap-1.5 text-[13px] leading-[18px] font-semibold tracking-[0.26px] text-[#cbdbf5]">
+            {item.kind === 'mark' ? (
+              <span class="text-[#2563eb]" aria-hidden="true">
+                ®
+              </span>
+            ) : (
+              <Glyph src={item.src} width={item.width} height={item.height} />
+            )}
+            {item.label}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

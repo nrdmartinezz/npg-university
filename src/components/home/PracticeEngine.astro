@@ -1,0 +1,195 @@
+---
+import Glyph from './Glyph.astro';
+
+const points = [
+  {
+    title: 'Keep Courses For Life',
+    body: 'Buy once, train every future employee forever with zero seat renewals.',
+    icon: '/images/home/icon-infinity.svg',
+    width: 20,
+    height: 9.167,
+    wash: 'bg-[#2563eb]/20',
+  },
+  {
+    title: 'Real Audio Call Roleplays',
+    body: 'Actual recorded calls dissecting exact what-to-say and avoid frameworks.',
+    icon: '/images/home/icon-audio.svg',
+    width: 18.333,
+    height: 15.792,
+    wash: 'bg-[#2563eb]/20',
+  },
+  {
+    title: '24/7 Multi-Device Access',
+    body: 'Stream anytime during morning huddles, quiet afternoons, or at home.',
+    icon: '/images/home/icon-devices.svg',
+    width: 16.667,
+    height: 13.333,
+    wash: 'bg-[#f8f9ff]/20',
+  },
+];
+
+const chapters = [
+  {
+    label: '1. Understanding the Caller’s Underlying Fear',
+    meta: '03:15',
+    tone: 'muted',
+  },
+  {
+    label: '2. How to Deflect Price with Value Anchoring',
+    meta: 'Now Playing',
+    tone: 'active',
+  },
+  {
+    label: '3. Script Breakdown: Live Practice Phone Call',
+    meta: '05:40',
+    tone: 'locked',
+  },
+];
+---
+
+<section id="engine" class="bg-[#0b132b] px-6 py-16 text-[#f8f9ff]">
+  <div class="mx-auto grid w-full max-w-[1280px] items-start gap-10 lg:grid-cols-2 lg:gap-16">
+    <div class="flex flex-col gap-6">
+      <p
+        class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#cce5ff] uppercase"
+      >
+        The Modern Practice Engine
+      </p>
+      <h2
+        class="font-display text-[clamp(1.875rem,4vw,2.5rem)] leading-[1.35] font-bold tracking-[-0.8px]"
+      >
+        Stop Retraining From Scratch. Automate Your Practice Growth For Life.
+      </h2>
+      <p class="text-lg leading-8 text-[#cbdbf5]">
+        Turn world-class training into a permanent, automated clinic asset. Eliminate 40+ hours of
+        repetitive staff onboarding.
+      </p>
+      <ul class="flex flex-col gap-7 pt-1">
+        {
+          points.map((point) => (
+            <li class="flex items-start gap-2">
+              <span
+                class:list={[
+                  'mt-0.5 flex size-8 items-center justify-center rounded-lg',
+                  point.wash,
+                ]}
+              >
+                <Glyph src={point.icon} width={point.width} height={point.height} />
+              </span>
+              <span>
+                <span class="font-display block text-lg leading-7 font-semibold">
+                  {point.title}
+                </span>
+                <span class="mt-1 block text-sm leading-6 text-[#cbdbf5]">{point.body}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="pt-2">
+        <a
+          href="#advisory"
+          class="font-display inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#2563eb] px-6 py-4 text-[15px] leading-5 font-bold tracking-[0.15px] text-white no-underline shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] hover:bg-[#1d4ed8]"
+        >
+          View Practice All-Access Pass
+          <Glyph src="/images/home/icon-arrow.svg" width={12} height={12} />
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col gap-2 rounded-2xl bg-[#1e293b] p-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
+    >
+      <div class="relative overflow-hidden rounded-xl bg-[#0b132b]">
+        <img
+          src="/images/home/lesson-player.png"
+          alt="On-demand lesson player showing Mastering Consumer Purchase Psychology"
+          width="640"
+          height="360"
+          class="aspect-video w-full object-cover"
+        />
+        <div class="absolute inset-0 bg-[#0b132b]/30 backdrop-blur-[0.5px]"></div>
+        <a
+          href="#advisory"
+          class="absolute inset-0 flex items-center justify-center"
+          aria-label="Preview the sample lesson"
+        >
+          <span
+            class="flex size-16 items-center justify-center rounded-full bg-[#2563eb] pr-3.5 pl-[18px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]"
+          >
+            <Glyph src="/images/home/icon-play-lg.svg" width={14.667} height={18.667} />
+          </span>
+        </a>
+        <div
+          class="absolute inset-x-4 bottom-3 flex items-center gap-3 rounded-lg bg-[#0b132b]/80 p-2 backdrop-blur-sm"
+        >
+          <Glyph src="/images/home/icon-play-bar.svg" width={15} height={15} />
+          <span
+            class="h-1.5 flex-1 overflow-hidden rounded-full bg-[#f8f9ff]/20"
+            aria-hidden="true"
+          >
+            <span class="block h-full w-[45%] rounded-full bg-[#2563eb]"></span>
+          </span>
+          <span class="font-display text-[11px] leading-[14px] font-bold tracking-[0.66px]"
+            >04:12 / 12:45</span
+          >
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 pt-4">
+        <p
+          class="font-display text-[11px] leading-[14px] font-bold tracking-[0.55px] text-[#cbdbf5] uppercase"
+        >
+          Lesson chapters:
+        </p>
+        <ul class="flex flex-col gap-2.5">
+          {
+            chapters.map((chapter) => (
+              <li
+                class:list={[
+                  'flex items-center justify-between gap-3 rounded-lg px-3 py-3',
+                  chapter.tone === 'active'
+                    ? 'bg-[#006194]/20'
+                    : chapter.tone === 'locked'
+                      ? 'bg-[#f8f9ff]/5'
+                      : 'bg-[#f8f9ff]/10',
+                ]}
+              >
+                <span class="inline-flex min-w-0 items-center gap-2">
+                  {chapter.tone === 'active' && (
+                    <Glyph src="/images/home/icon-play-mini.svg" width={8.25} height={10.5} />
+                  )}
+                  {chapter.tone === 'locked' && (
+                    <Glyph src="/images/home/icon-lock.svg" width={12} height={15.75} />
+                  )}
+                  <span
+                    class:list={[
+                      'font-display text-[13px] leading-6 font-semibold tracking-[0.26px]',
+                      chapter.tone === 'active' ? 'text-[#acedff]' : 'text-[#f8f9ff]',
+                    ]}
+                  >
+                    {chapter.tone === 'muted' && (
+                      <span class="font-display mr-2 text-[11px] font-bold tracking-[1.1px] text-[#cce5ff] uppercase">
+                        The Modern Practice Engine
+                      </span>
+                    )}
+                    {chapter.label}
+                  </span>
+                </span>
+                {chapter.tone === 'active' ? (
+                  <span class="font-display shrink-0 rounded bg-[#006194] px-1.5 py-0.5 text-[11px] leading-[14px] font-bold tracking-[0.66px] text-white">
+                    {chapter.meta}
+                  </span>
+                ) : (
+                  <span class="shrink-0 text-sm leading-5 tracking-[0.26px] text-[#cbdbf5]">
+                    {chapter.meta}
+                  </span>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

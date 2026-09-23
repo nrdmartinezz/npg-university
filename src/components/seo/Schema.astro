@@ -30,8 +30,8 @@ const graph: Record<string, unknown>[] = [
     legalName: site.legalName,
     description: site.description,
     url: site.url,
-    telephone: site.business.phone,
-    email: site.business.email,
+    ...(site.business.phone && { telephone: site.business.phone }),
+    ...(site.business.email && { email: site.business.email }),
     priceRange: site.business.priceRange,
     address: {
       '@type': 'PostalAddress',

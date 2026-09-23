@@ -1,0 +1,87 @@
+---
+import Glyph from './Glyph.astro';
+
+const faqs = [
+  {
+    question: 'How long does our practice keep access to the courses?',
+    answer:
+      'Access is lifetime. You buy a course once and keep it, with no seat renewals, so every future employee can train from the same library.',
+  },
+  {
+    question: 'Can my entire team watch together, or do I need separate licenses?',
+    answer:
+      'A lifetime team license covers your practice. Your whole team can watch together or on their own devices. You do not need a separate license for each person.',
+  },
+  {
+    question: 'Is this training specific to orthodontic practices or general dental?',
+    answer:
+      'The curriculum is built for orthodontic practices and high-value dental teams, including the front desk, treatment coordinators, doctors, office managers, and clinical assistants.',
+  },
+  {
+    question: 'How does this compare to hiring an in-office consultant for $30,000+?',
+    answer:
+      'An in-office consultant is a short engagement at a much higher fee. These on-demand courses are sold individually on SamCart, and you keep the ones you buy. Where a sales page states a price, it is shown on the course. Checkout always confirms the current price.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<section id="faq" class="bg-[#f8f9ff] px-6 py-10" aria-labelledby="faq-heading">
+  <div class="mx-auto flex w-full max-w-4xl flex-col gap-6">
+    <div class="text-center">
+      <p
+        class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#006194] uppercase"
+      >
+        Frequently asked questions
+      </p>
+      <h2
+        id="faq-heading"
+        class="font-display mt-3 text-[clamp(1.875rem,4vw,2.5rem)] leading-[1.3] font-bold tracking-[-0.8px] text-[#0f172a]"
+      >
+        Everything Practice Owners Ask
+      </h2>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      {
+        faqs.map((item) => (
+          <details class="group rounded-xl bg-white p-6 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+            <summary class="flex min-h-11 cursor-pointer items-center justify-between gap-4">
+              <span class="font-display text-lg leading-8 font-semibold text-[#0f172a]">
+                {item.question}
+              </span>
+              <Glyph
+                src="/images/home/icon-chevron.svg"
+                width={12}
+                height={7.4}
+                class="transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <p class="max-w-3xl pt-4 text-base leading-7 text-[#64748b]">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    list-style: none;
+  }
+</style>

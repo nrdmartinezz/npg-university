@@ -1,0 +1,24 @@
+---
+/**
+ * Renders a Figma SVG at its root width and height. Do not stretch these
+ * with percentage sizing — the exported files use preserveAspectRatio="none".
+ */
+interface Props {
+  src: string;
+  width: number;
+  height: number;
+  alt?: string;
+  class?: string;
+}
+
+const { src, width, height, alt = '', class: className } = Astro.props;
+---
+
+<img
+  src={src}
+  width={width}
+  height={height}
+  alt={alt}
+  style={`width:${width}px;height:${height}px`}
+  class:list={['inline-block max-w-none shrink-0', className]}
+/>

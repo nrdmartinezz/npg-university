@@ -1,19 +1,4 @@
 ---
-/**
- * Owns its outer element rather than wrapping in Section: sticky behaviour
- * needs its own positioning and stacking context. Container is used inside.
- *
- * The nav slots are filled by MegaMenu (md and up) and MobileNav (below md),
- * both reading src/config/navigation.ts — one tree, two renderings.
- */
-import Container from '../ui/Container.astro';
-import Button from '../ui/Button.astro';
-import MegaMenu from './MegaMenu.astro';
-import MobileNav from './MobileNav.astro';
-import { navigation } from '../../config/navigation';
-import { site } from '../../config/site';
-import { Icon } from 'astro-icon/components';
-
 export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
 
 interface Props {
@@ -22,118 +7,167 @@ interface Props {
 
 const { sticky = 'sticky' } = Astro.props;
 
-const currentPath = Astro.url.pathname;
-const positioned = sticky !== 'static';
+const menuGroups = [
+  {
+    heading: 'Quick Links',
+    links: [
+      { label: 'On-Demand Courses', href: '/courses/' },
+      { label: 'Curriculum Tracks', href: '/#tracks' },
+      { label: 'Practice Growth Engine', href: '/#engine' },
+      { label: 'Talk With an Advisor', href: '/#advisory' },
+      { label: 'FAQs', href: '/#faq' },
+    ],
+  },
+  {
+    heading: 'Course Categories',
+    links: [
+      { label: 'Practice Culture & Leadership', href: '/courses/#leadership' },
+      { label: 'Receptionist & Hospitality', href: '/courses/#receptionist' },
+      { label: 'New Patient Experience', href: '/courses/#new-patient-experience' },
+      { label: 'Treatment Coordinator Conversion', href: '/courses/#treatment-coordinator' },
+      { label: 'Clinical Team', href: '/courses/#clinical-team' },
+    ],
+  },
+  {
+    heading: 'Programs',
+    links: [
+      { label: 'Live Bootcamps', href: '/#advisory' },
+      { label: 'Private Diamond & Platinum Coaching', href: '/#advisory' },
+      { label: 'Mastermind Events', href: '/#advisory' },
+      { label: 'New Patient Group Podcast', href: '/#advisory' },
+    ],
+  },
+];
 ---
 
 <header
-  data-sticky={sticky}
   class:list={[
-    'group/header border-line-base bg-surface-base z-50 w-full border-b',
-    // The mega panel is absolutely positioned against the header, so the header
-    // must be a positioned ancestor even when it isn't sticky.
-    positioned ? 'sticky top-0' : 'relative',
+    'z-50 w-full border-b border-[#e2e8f0] bg-[#eff4ff]/95 shadow-[0_1px_1px_rgba(0,0,0,0.05)] backdrop-blur-md',
+    sticky === 'static' ? 'relative' : 'sticky top-0',
   ]}
 >
-  <Container
-    as="div"
-    layout="bar"
-    gap="none"
-    class="justify-between gap-4 py-4 group-data-[scrolled=true]/header:py-2"
+  <div class="bg-[#2563eb] text-white shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+    <div
+      class="mx-auto flex w-full max-w-[1280px] flex-wrap items-center justify-between gap-x-4 gap-y-1 px-6 py-2"
+    >
+      <p class="font-display text-[13px] leading-[18px] font-semibold tracking-[0.26px]">
+        Learn from top leaders in the industry
+      </p>
+      <a
+        href="/#advisory"
+        class="font-display inline-flex min-h-7 items-center rounded-lg px-4 py-1 text-[15px] leading-5 font-semibold tracking-[0.15px] text-white no-underline hover:bg-white/10"
+      >
+        Join our Mastermind Group
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="mx-auto flex w-full max-w-[1280px] flex-wrap items-center justify-between gap-3 px-6 py-2"
   >
-    <a href="/" class="text-ink-base flex items-center gap-2 font-semibold no-underline">
-      <Icon name="lucide:hexagon" class="text-brand-600 size-7" aria-hidden="true" />
-      <span>{site.name}</span>
+    <a href="/" class="inline-flex shrink-0 items-center no-underline" aria-label="New Patient Group">
+      <img
+        src="/images/home/logo.png"
+        alt="New Patient Group"
+        width="135"
+        height="98"
+        class="h-[72px] w-auto sm:h-[98px]"
+      />
     </a>
 
-    <MegaMenu currentPath={currentPath} />
-
-    <div class="flex items-center gap-2">
+    <div class="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
       <a
-        href={`tel:${site.business.phoneHref}`}
-        class="text-ink-base hidden min-h-11 items-center gap-2 px-2 font-medium no-underline lg:inline-flex"
+        href="/#advisory"
+        class="font-display inline-flex min-h-10 items-center gap-1.5 rounded-lg bg-[#0b132b] px-4 py-2 text-[15px] leading-5 font-semibold tracking-[0.15px] text-white no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:bg-[#152044]"
       >
-        <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
-        {site.business.phone}
+        <img
+          src="/images/home/icon-calendar.svg"
+          width="13.5"
+          height="15"
+          alt=""
+          style="width:13.5px;height:15px"
+          class="inline-block max-w-none shrink-0"
+        />
+        Schedule 15-Min Consult
       </a>
 
-      {
-        navigation.cta && (
-          <Button href={navigation.cta.href} size="sm" class="max-md:hidden">
-            {navigation.cta.label}
-          </Button>
-        )
-      }
-
-      <MobileNav currentPath={currentPath} />
+      <button
+        type="button"
+        id="menu-toggle"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        class="font-display inline-flex min-h-10 items-center gap-1.5 rounded-lg bg-[#2563eb] px-4 py-2 text-[15px] leading-5 font-semibold tracking-[0.15px] text-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:bg-[#1d4ed8]"
+      >
+        <img
+          src="/images/home/icon-menu.svg"
+          width="24"
+          height="24"
+          alt=""
+          style="width:24px;height:24px"
+          class="inline-block max-w-none shrink-0"
+        />
+        Menu
+      </button>
     </div>
-  </Container>
+  </div>
+
+  <div id="site-menu" hidden class="border-t border-[#e2e8f0] bg-white">
+    <nav
+      aria-label="Primary"
+      class="mx-auto grid w-full max-w-[1280px] gap-8 px-6 py-8 sm:grid-cols-3"
+    >
+      {
+        menuGroups.map((group) => (
+          <div>
+            <h2 class="font-display text-lg leading-8 font-semibold tracking-[-0.45px] text-[#0f172a]">
+              {group.heading}
+            </h2>
+            <ul class="mt-4 flex flex-col gap-1">
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="inline-flex min-h-11 items-center text-sm text-[#334155] no-underline hover:text-[#006194]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
 </header>
 
-<style>
-  header {
-    transition:
-      transform 200ms ease,
-      padding 150ms ease;
-  }
-
-  header[data-hidden='true'] {
-    transform: translateY(-100%);
-  }
-
-  header[data-scrolled='true'] {
-    box-shadow: var(--shadow-sm);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    header {
-      transition: none;
-    }
-
-    header[data-hidden='true'] {
-      transform: none;
-    }
-  }
-</style>
-
 <script>
-  const header = document.querySelector<HTMLElement>('header[data-sticky]');
+  const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#site-menu');
 
-  if (header) {
-    const mode = header.dataset.sticky;
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.hidden = !open;
+      if (open) {
+        menu.querySelector<HTMLElement>('a')?.focus();
+      }
+    };
 
-    if (mode === 'shrink' || mode === 'hide-on-scroll') {
-      let lastY = window.scrollY;
-      let ticking = false;
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
 
-      const update = () => {
-        const y = window.scrollY;
-        header.dataset.scrolled = String(y > 8);
+    menu.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLAnchorElement) setOpen(false);
+    });
 
-        if (mode === 'hide-on-scroll') {
-          // Never retract while the drawer or a mega panel is open.
-          const navOpen =
-            document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
-            document.querySelector('.mega-item[data-open="true"]') !== null;
-          header.dataset.hidden = String(!navOpen && y > lastY && y > 120);
-        }
-
-        lastY = y;
-        ticking = false;
-      };
-
-      window.addEventListener(
-        'scroll',
-        () => {
-          if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
-          }
-        },
-        { passive: true },
-      );
-
-      update();
-    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
   }
 </script>

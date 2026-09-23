@@ -93,35 +93,29 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
   url: 'https://example.com',
-  name: 'Demo Business',
-  legalName: 'Demo Business LLC',
-  tagline: 'Straightforward work, done right the first time.',
+  name: 'New Patient Group',
+  legalName: 'New Patient Group',
+  tagline: 'Train your team on demand. Master consumer psychology.',
   description:
-    'Demo Business is a placeholder used by the starter template. Replace this copy during project setup.',
+    'Battle-tested on-demand courses to train dental and orthodontic teams, master patient psychology, and convert more same-day starts.',
   locale: 'en-US',
 
   business: {
-    schemaType: 'LocalBusiness',
-    phone: '(555) 010-4477',
-    phoneHref: '+15550104477',
+    schemaType: 'ProfessionalService',
+    phone: '',
+    phoneHref: '',
     email: 'hello@example.com',
     address: {
-      street: '1200 Market Street, Suite 400',
-      locality: 'Columbus',
-      region: 'OH',
-      postalCode: '43215',
+      street: '2064 Ever Red Court',
+      locality: 'Colorado Springs',
+      region: 'CO',
+      postalCode: '80921',
       country: 'US',
     },
-    geo: { latitude: 39.9612, longitude: -82.9988 },
-    hours: ['Mo-Fr 08:00-17:00', 'Sa 09:00-13:00'],
-    priceRange: '$$',
+    hours: [],
   },
 
-  social: {
-    facebook: 'https://facebook.com/example',
-    instagram: 'https://instagram.com/example',
-    linkedin: 'https://linkedin.com/company/example',
-  },
+  social: {},
 
   defaultOgImage: '/og-default.png',
 

@@ -1,0 +1,40 @@
+---
+const partners = [
+  { name: 'invisalign', mark: '®', class: 'font-extrabold tracking-[-0.55px]' },
+  { name: 'GAIDGE', class: 'font-black tracking-[1.1px]' },
+  { name: 'ortho', accent: 'Fi', class: 'font-bold tracking-[-0.22px]' },
+  { name: 'DentalMonitoring', class: 'font-semibold tracking-[2.2px]' },
+  {
+    name: 'PROPEL',
+    accent: 'ORTHO',
+    accentClass: 'text-[14px] tracking-[-0.22px] text-[#006194]',
+    class: 'font-black tracking-[-0.22px]',
+  },
+  { name: 'SCHULMAN GROUP', class: 'font-bold tracking-[0.55px]' },
+];
+---
+
+<section class="border-t border-[#e5eeff] bg-white px-6 pt-10 pb-12" aria-label="Industry partners">
+  <p
+    class="font-display text-center text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#64748b] uppercase"
+  >
+    Trusted referral &amp; advisory partner to the leading dental innovators
+  </p>
+  <ul
+    class="mx-auto mt-8 flex max-w-[1280px] flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70 grayscale"
+  >
+    {
+      partners.map((partner) => (
+        <li class:list={['font-display text-[22px] leading-[30px] text-[#0b132b]', partner.class]}>
+          {partner.name}
+          {partner.mark && <span class="text-[#2563eb]">{partner.mark}</span>}
+          {partner.accent && (
+            <span class:list={[partner.accentClass ?? 'font-extrabold text-[#006194]']}>
+              {partner.accent}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>

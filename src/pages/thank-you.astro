@@ -19,10 +19,14 @@ import { Icon } from 'astro-icon/components';
       </p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <Button href={`tel:${site.business.phoneHref}`}>
-          <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
-          {site.business.phone}
-        </Button>
+        {
+          site.business.phone && (
+            <Button href={`tel:${site.business.phoneHref}`}>
+              <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
+              {site.business.phone}
+            </Button>
+          )
+        }
         <Button href="/" variant="secondary">Back to home</Button>
       </div>
     </Container>
