@@ -15,7 +15,6 @@ const tracks = [
     iconWidth: 28,
     iconHeight: 14,
     check: '/images/home/icon-check.svg',
-    arrow: '/images/home/icon-arrow-sm.svg',
   },
   {
     eyebrow: 'Receptionist / Front Desk',
@@ -34,7 +33,6 @@ const tracks = [
     iconWidth: 23.333,
     iconHeight: 21,
     check: '/images/home/icon-check.svg',
-    arrow: '/images/home/icon-arrow-sm.svg',
   },
   {
     eyebrow: 'Treatment Coordinator',
@@ -53,7 +51,6 @@ const tracks = [
     iconWidth: 23.333,
     iconHeight: 23.333,
     check: '/images/home/icon-check-teal.svg',
-    arrow: '/images/home/icon-arrow-teal.svg',
   },
   {
     eyebrow: 'New Patient Experience',
@@ -68,7 +65,6 @@ const tracks = [
     iconWidth: 28,
     iconHeight: 14,
     check: '/images/home/icon-check.svg',
-    arrow: '/images/home/icon-arrow-sm.svg',
   },
   {
     eyebrow: 'Clinical Team',
@@ -83,7 +79,6 @@ const tracks = [
     iconWidth: 23.333,
     iconHeight: 21,
     check: '/images/home/icon-check-teal.svg',
-    arrow: '/images/home/icon-arrow-teal.svg',
   },
 ];
 ---
@@ -118,8 +113,9 @@ const tracks = [
     <ul class="grid gap-6 lg:grid-cols-3">
       {
         tracks.map((track) => (
-          <li class="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
-            <div class="flex flex-col gap-4">
+          <li class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08)] transition duration-150 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-12px_rgba(11,19,43,0.22)]">
+            <span class="h-1.5" style={`background:${track.tone}`} />
+            <div class="flex flex-1 flex-col gap-4 p-6">
               <span
                 class:list={['flex size-12 items-center justify-center rounded-xl', track.wash]}
               >
@@ -144,14 +140,16 @@ const tracks = [
                 ))}
               </ul>
             </div>
-            <a
-              href={track.href}
-              class="font-display mt-5 inline-flex min-h-11 w-fit items-center gap-1 text-[13px] leading-[18px] font-bold tracking-[0.26px] no-underline"
-              style={`color:${track.tone}`}
-            >
-              {track.cta}
-              <Glyph src={track.arrow} width={10.667} height={10.667} />
-            </a>
+            <div class="px-6 pb-6">
+              <a
+                href={track.href}
+                class="font-display inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg px-4 text-[15px] leading-5 font-bold tracking-[0.15px] text-white no-underline shadow-[0_8px_16px_-6px_rgba(11,19,43,0.45)] transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                style={`background:${track.tone}`}
+              >
+                {track.cta}
+                <Glyph src="/images/home/icon-arrow.svg" width={12} height={12} />
+              </a>
+            </div>
           </li>
         ))
       }

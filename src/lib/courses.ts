@@ -1,8 +1,6 @@
 /**
  * On-demand course queries. Pages pass the results into presentational components.
  */
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type CourseEntry = CollectionEntry<'courses'>;
@@ -79,17 +77,6 @@ export function relatedCourses(entries: CourseEntry[], current: CourseEntry, lim
   return entries
     .filter((entry) => entry.id !== current.id && entry.data.tracks.some((track) => tracksForCurrent.has(track)))
     .slice(0, limit);
-}
-
-/** Product photo or lesson still saved from the SamCart sales page. */
-export function courseCover(slug: string): string | null {
-  for (const ext of ['.jpg', '.jpeg', '.png', '.webp']) {
-    const file = `${slug}${ext}`;
-    if (existsSync(join(process.cwd(), 'public', 'images', 'courses', file))) {
-      return `/images/courses/${file}`;
-    }
-  }
-  return null;
 }
 
 export function formatPrice(amount: number): string {

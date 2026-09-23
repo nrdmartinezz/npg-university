@@ -4,48 +4,94 @@ on:
   push:
     branches: [main, staging]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: GitHub environment to deploy
-        type: choice
-        required: true
-        default: staging
-        options:
-          - staging
-          - production
 
 concurrency:
-  group: deploy-${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}
+  group: deploy-staging
   cancel-in-progress: false
 
 jobs:
-  staging:
+  deploy:
     name: Deploy staging
-    if: >-
-      (github.event_name == 'workflow_dispatch' && inputs.environment == 'staging') ||
-      (github.event_name == 'push' && github.ref_name == 'staging')
+    runs-on: ubuntu-latest
     environment: staging
-    uses: ./.github/workflows/deploy-target.yml
-    with:
-      site_url: ${{ vars.SITE_URL }}
-      allow_indexing: ${{ vars.ALLOW_INDEXING }}
-    secrets:
-      ftp_host: ${{ secrets.FTP_HOST }}
-      ftp_user: ${{ secrets.FTP_USER }}
-      ftp_password: ${{ secrets.FTP_PW }}
+    steps:
+      - name: Check deploy settings
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PW: ${{ secrets.FTP_PW }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
+        run: |
+          missing=0
+          if [ -z "$FTP_HOST" ]; then
+            echo "::error title=Missing FTP_HOST::The staging environment needs an FTP_HOST secret."
+            missing=1
+          fi
+          if [ -z "$FTP_USER" ]; then
+            echo "::error title=Missing FTP_USER::The staging environment needs an FTP_USER secret."
+            missing=1
+          fi
+          if [ -z "$FTP_PW" ]; then
+            echo "::error title=Missing FTP_PW::The staging environment needs an FTP_PW secret."
+            missing=1
+          fi
+          if [ -z "$SITE_URL" ]; then
+            echo "::error title=Missing SITE_URL::The staging environment needs a SITE_URL variable."
+            missing=1
+          fi
+          if [ "$missing" -eq 0 ]; then
+            echo "Staging settings found. Indexing: ${ALLOW_INDEXING:-false}"
+          fi
+          exit "$missing"
 
-  production:
-    name: Deploy production
-    if: >-
-      (github.event_name == 'workflow_dispatch' && inputs.environment == 'production') ||
-      (github.event_name == 'push' && github.ref_name == 'main')
-    environment: production
-    uses: ./.github/workflows/deploy-target.yml
-    with:
-      site_url: ${{ vars.SITE_URL }}
-      allow_indexing: ${{ vars.ALLOW_INDEXING }}
-    secrets:
-      ftp_host: ${{ secrets.FTP_SERVER }}
-      ftp_user: ${{ secrets.FTP_USERNAME }}
-      ftp_password: ${{ secrets.FTP_PASSWORD }}
-      ftp_server_dir: ${{ secrets.FTP_SERVER_DIR }}
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run verify
+
+      - name: Install PHPMailer
+        run: composer install --no-dev --working-dir=public/api
+
+      - name: Write robots.txt
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
+        run: |
+          site="${SITE_URL%/}"
+          indexing="${ALLOW_INDEXING:-false}"
+          case "$indexing" in
+            false|0|no|off)
+              printf 'User-agent: *\nDisallow: /\n' > public/robots.txt
+              ;;
+            *)
+              printf 'User-agent: *\nAllow: /\n\nDisallow: /thank-you/\nDisallow: /styleguide/\n\nSitemap: %s/sitemap-index.xml\n' "$site" > public/robots.txt
+              ;;
+          esac
+
+      - name: Build
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING }}
+        run: npm run build
+
+      - name: FTP deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PW }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            cgi-bin/**
