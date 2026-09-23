@@ -1,7 +1,9 @@
 ---
 const year = new Date().getFullYear();
 
-const columns = [
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const columns: { heading: string; links: FooterLink[] }[] = [
   {
     heading: 'Course Categories',
     links: [

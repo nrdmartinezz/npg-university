@@ -45,9 +45,7 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'On-Demand Courses', href: '/courses/' },
-    ...(primaryTrack
-      ? [{ name: primaryTrack.label, href: `/courses/#${primaryTrack.id}` }]
-      : []),
+    ...(primaryTrack ? [{ name: primaryTrack.label, href: `/courses/#${primaryTrack.id}` }] : []),
     {
       name: course.data.title,
       label: breadcrumbLabel(course.data.title),

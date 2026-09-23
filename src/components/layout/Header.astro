@@ -12,7 +12,9 @@ interface Props {
 
 const { sticky = 'sticky', breadcrumbs = [] } = Astro.props;
 
-const menuGroups = [
+type MenuLink = { label: string; href: string; external?: boolean };
+
+const menuGroups: { heading: string; links: MenuLink[] }[] = [
   {
     heading: 'Course Categories',
     links: [
