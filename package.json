@@ -24,14 +24,14 @@
     "php:dev": "npm run build && npm run php:install && npm run php:serve"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.6",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.2.8",
     "@iconify-json/lucide": "^1.2.72",
-    "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.6",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.4",
     "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
@@ -41,7 +41,14 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "start-server-and-test": "^2.1.2",
-    "style-dictionary": "^4.4.0",
+    "style-dictionary": "^5.5.5",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "lighthouse": "13.5.0",
+    "puppeteer": "25.12.0",
+    "puppeteer-core": "25.12.0",
+    "tmp": "0.2.7",
+    "uuid": "11.1.1"
   }
 }

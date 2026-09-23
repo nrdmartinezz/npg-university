@@ -11,6 +11,9 @@ export default defineConfig({
   site: 'https://example.com',
   output: 'static',
   trailingSlash: 'always',
+  // Keep HTML-aware whitespace from Astro 5. Astro 7 defaults to JSX rules,
+  // which drop spaces between inline elements.
+  compressHTML: true,
   build: { format: 'directory' },
   integrations: [
     mdx(),
