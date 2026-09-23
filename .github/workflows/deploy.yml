@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
     inputs:
       environment:
@@ -15,14 +15,14 @@ on:
           - production
 
 concurrency:
-  group: deploy-${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}
+  group: deploy-${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}
   cancel-in-progress: false
 
 jobs:
   deploy:
     name: Build and upload
     runs-on: ubuntu-latest
-    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}
     env:
       # Staging uses FTP_HOST, FTP_USER, FTP_PW, SITE_URL, and ALLOW_INDEXING.
       # Production can keep the original FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD names.
@@ -63,7 +63,7 @@ jobs:
         run: |
           site="${SITE_URL%/}"
           indexing="${ALLOW_INDEXING}"
-          target="${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}"
+          target="${{ github.event_name == 'workflow_dispatch' && inputs.environment || (github.ref_name == 'staging' && 'staging' || 'production') }}"
           if [ -z "$indexing" ] && [ "$target" = "staging" ]; then
             indexing="false"
           fi
