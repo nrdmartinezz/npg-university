@@ -5,7 +5,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Prose from '../../components/ui/Prose.astro';
 import Glyph from '../../components/home/Glyph.astro';
 import {
-  courseCover,
   courseDuration,
   formatPrice,
   getPublished,
@@ -33,7 +32,6 @@ const { course, courses } = Astro.props;
 const { Content } = await render(course);
 const suggestions = relatedCourses(courses, course);
 const trackNames = course.data.tracks.map((id) => trackById(id)?.label).filter(Boolean);
-const cover = courseCover(course.id);
 const duration = courseDuration(course.data.includes);
 const lifetime = hasLifetimeAccess(course.data.includes);
 const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
@@ -49,12 +47,7 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
   ]}
 >
   <section class="bg-[#eff4ff] px-6 py-14 sm:py-16">
-    <div
-      class:list={[
-        'mx-auto grid w-full max-w-[1100px] items-center gap-10',
-        cover && 'lg:grid-cols-2',
-      ]}
-    >
+    <div class="mx-auto flex w-full max-w-[760px] flex-col gap-10">
       <div class="flex flex-col gap-5">
         <p
           class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#006194] uppercase"
@@ -131,17 +124,6 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
           </a>
         </div>
       </div>
-      {
-        cover && (
-          <img
-            src={cover}
-            alt=""
-            width="1280"
-            height="720"
-            class="aspect-[4/3] w-full rounded-2xl object-cover shadow-[0_20px_40px_-16px_rgba(11,19,43,0.45)] lg:aspect-video"
-          />
-        )
-      }
     </div>
   </section>
 
@@ -197,35 +179,23 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
             More courses
           </h2>
           <ul class="mt-6 grid gap-5 sm:grid-cols-3">
-            {suggestions.map((item) => {
-              const relatedCover = courseCover(item.id);
-              return (
-                <li class="h-full">
-                  <a
-                    href={`/courses/${item.id}/`}
-                    class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white no-underline transition duration-150 hover:-translate-y-0.5 hover:border-[#2563eb] hover:shadow-[0_8px_20px_-6px_rgba(37,99,235,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
-                  >
-                    {relatedCover && (
-                      <img
-                        src={relatedCover}
-                        alt=""
-                        width="640"
-                        height="360"
-                        class="aspect-video w-full object-cover"
-                      />
+            {suggestions.map((item) => (
+              <li class="h-full">
+                <a
+                  href={`/courses/${item.id}/`}
+                  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white no-underline transition duration-150 hover:-translate-y-0.5 hover:border-[#2563eb] hover:shadow-[0_8px_20px_-6px_rgba(37,99,235,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                >
+                  <span class="flex flex-1 flex-col gap-2 p-5">
+                    <h3 class="font-display text-lg leading-7 font-semibold text-[#0f172a] group-hover:text-[#006194]">
+                      {item.data.title}
+                    </h3>
+                    {item.data.subtitle && (
+                      <p class="text-sm leading-6 text-[#64748b]">{item.data.subtitle}</p>
                     )}
-                    <span class="flex flex-1 flex-col gap-2 p-5">
-                      <h3 class="font-display text-lg leading-7 font-semibold text-[#0f172a] group-hover:text-[#006194]">
-                        {item.data.title}
-                      </h3>
-                      {item.data.subtitle && (
-                        <p class="text-sm leading-6 text-[#64748b]">{item.data.subtitle}</p>
-                      )}
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
