@@ -1,18 +1,17 @@
 ---
 import Glyph from './Glyph.astro';
+import { site } from '../../config/site';
 
 const assurances = [
-  { label: '30-Day Money-Back Guarantee', kind: 'mark' as const },
+  { label: '30-Day Money-Back Guarantee' },
   {
     label: '256-Bit Encrypted Secure Checkout',
-    kind: 'icon' as const,
     src: '/images/home/icon-lock-cta.svg',
     width: 12,
     height: 15.75,
   },
   {
     label: 'Instant Team Activation',
-    kind: 'icon' as const,
     src: '/images/home/icon-bolt.svg',
     width: 12,
     height: 15,
@@ -38,7 +37,7 @@ const assurances = [
     </h2>
     <p class="max-w-2xl text-lg leading-8 text-[#cbdbf5]">
       Enroll your practice into the On-Demand Academy today with lifetime access, or schedule a
-      15-minute consultation to determine the ideal customized roadmap for your team.
+      consultation to determine the ideal customized roadmap for your team.
     </p>
     <div class="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
       <a
@@ -48,23 +47,19 @@ const assurances = [
         Enroll Team in All-Access Pass ($2,499)
       </a>
       <a
-        href="#advisory"
+        href={site.consultUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         class="font-display inline-flex min-h-12 items-center justify-center rounded-lg bg-[#f8f9ff]/10 px-6 py-4 text-center text-[15px] leading-5 font-semibold tracking-[0.15px] text-[#f8f9ff] no-underline backdrop-blur-sm hover:bg-[#f8f9ff]/20"
       >
-        Schedule 15-Min Practice Advisor Call
+        Schedule a Practice Advisor Call
       </a>
     </div>
     <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-4">
       {
         assurances.map((item) => (
           <li class="font-display inline-flex items-center gap-1.5 text-[13px] leading-[18px] font-semibold tracking-[0.26px] text-[#cbdbf5]">
-            {item.kind === 'mark' ? (
-              <span class="text-[#2563eb]" aria-hidden="true">
-                ®
-              </span>
-            ) : (
-              <Glyph src={item.src} width={item.width} height={item.height} />
-            )}
+            {item.src && <Glyph src={item.src} width={item.width} height={item.height} />}
             {item.label}
           </li>
         ))

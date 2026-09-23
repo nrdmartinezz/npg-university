@@ -1,5 +1,11 @@
 ---
+import { getEntry } from 'astro:content';
 import Glyph from './Glyph.astro';
+
+const featuredCourse = await getEntry('courses', 'consumer-psychology');
+if (!featuredCourse) {
+  throw new Error('Missing consumer-psychology course for the homepage hero.');
+}
 
 const metrics = ['+28.6% Production', '+41.3% Same-Day Starts', '−96% Ad Waste'];
 const highlights = [
@@ -47,11 +53,11 @@ const highlights = [
 
       <div class="pt-1 pb-2">
         <a
-          href="#courses"
+          href="/courses/"
           class="font-display inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#2563eb] px-6 py-4 text-[15px] leading-5 font-bold tracking-[0.15px] text-white no-underline shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)] hover:bg-[#1d4ed8]"
         >
           Explore All On-Demand Courses
-          <Glyph src="/images/home/icon-chevron-down.svg" width={13.333} height={13.333} />
+          <Glyph src="/images/home/icon-arrow.svg" width={12} height={12} />
         </a>
       </div>
 
@@ -147,11 +153,14 @@ const highlights = [
           }
         </ul>
         <a
-          href="#advisory"
+          href={featuredCourse.data.enrollUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="font-display inline-flex min-h-11 items-center justify-center gap-1 rounded-lg bg-[#2563eb] px-4 py-2 text-[15px] leading-5 font-semibold tracking-[0.15px] text-white no-underline hover:bg-[#1d4ed8]"
         >
           Enroll Practice Today
           <Glyph src="/images/home/icon-arrow.svg" width={12} height={12} />
+          <span class="sr-only"> (opens SamCart)</span>
         </a>
       </div>
     </article>

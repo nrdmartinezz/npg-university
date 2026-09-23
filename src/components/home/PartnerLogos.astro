@@ -1,6 +1,6 @@
 ---
 const partners = [
-  { name: 'invisalign', mark: '®', class: 'font-extrabold tracking-[-0.55px]' },
+  { name: 'invisalign', class: 'font-extrabold tracking-[-0.55px]' },
   { name: 'GAIDGE', class: 'font-black tracking-[1.1px]' },
   { name: 'ortho', accent: 'Fi', class: 'font-bold tracking-[-0.22px]' },
   { name: 'DentalMonitoring', class: 'font-semibold tracking-[2.2px]' },
@@ -27,7 +27,6 @@ const partners = [
       partners.map((partner) => (
         <li class:list={['font-display text-[22px] leading-[30px] text-[#0b132b]', partner.class]}>
           {partner.name}
-          {partner.mark && <span class="text-[#2563eb]">{partner.mark}</span>}
           {partner.accent && (
             <span class:list={[partner.accentClass ?? 'font-extrabold text-[#006194]']}>
               {partner.accent}

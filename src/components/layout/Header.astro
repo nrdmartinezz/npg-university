@@ -1,4 +1,6 @@
 ---
+import { site } from '../../config/site';
+
 export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
 
 interface Props {
@@ -81,7 +83,9 @@ const menuGroups = [
 
     <div class="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
       <a
-        href="/#advisory"
+        href={site.consultUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         class="font-display inline-flex min-h-10 items-center gap-1.5 rounded-lg bg-[#0b132b] px-4 py-2 text-[15px] leading-5 font-semibold tracking-[0.15px] text-white no-underline shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:bg-[#152044]"
       >
         <img
@@ -92,7 +96,7 @@ const menuGroups = [
           style="width:13.5px;height:15px"
           class="inline-block max-w-none shrink-0"
         />
-        Schedule 15-Min Consult
+        Schedule a Consult
       </a>
 
       <button

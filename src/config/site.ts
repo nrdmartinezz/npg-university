@@ -89,6 +89,9 @@ export interface SiteConfig {
 
   /** 'none' is correct for US-only clients. Switch to 'banner' only when required. */
   consent: 'none' | 'banner';
+
+  /** HubSpot meetings page for the consult buttons. */
+  consultUrl: string;
 }
 
 export const site: SiteConfig = {
@@ -138,6 +141,9 @@ export const site: SiteConfig = {
   },
 
   consent: 'none',
+
+  consultUrl:
+    'https://meetings-na2.hubspot.com/mandy-mair?_hstc=48066232.740506376db9a58+4ab616ddb8efa90dd.1782841520852.17882291194.1788346598104.9&_hssc=48066232.1.1788346598104&_hsfp=fafc63f5c5dc9b82b8f9067937791cc6&uuid=a53ee611-eea1-476f-b872-9c2a78d65baf',
 };
 
 export const formattedAddress = [
