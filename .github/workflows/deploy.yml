@@ -4,17 +4,46 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      environment:
+        description: GitHub environment to deploy
+        type: choice
+        required: true
+        default: staging
+        options:
+          - staging
+          - production
 
 concurrency:
-  group: deploy
+  group: deploy-${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Build and upload to cPanel
+    name: Build and upload
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}
+    env:
+      # Staging uses FTP_HOST, FTP_USER, FTP_PW, SITE_URL, and ALLOW_INDEXING.
+      # Production can keep the original FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD names.
+      SITE_URL: ${{ vars.SITE_URL || secrets.SITE_URL }}
+      ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING || secrets.ALLOW_INDEXING }}
+      FTP_HOST: ${{ secrets.FTP_HOST || secrets.FTP_SERVER }}
+      FTP_USER: ${{ secrets.FTP_USER || secrets.FTP_USERNAME }}
+      FTP_PW: ${{ secrets.FTP_PW || secrets.FTP_PASSWORD }}
+      FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
     steps:
+      - name: Check deploy settings
+        run: |
+          missing=0
+          for name in FTP_HOST FTP_USER FTP_PW SITE_URL; do
+            if [ -z "${!name}" ]; then
+              echo "::error title=Missing $name::Add $name to the GitHub environment used by this deploy."
+              missing=1
+            fi
+          done
+          exit "$missing"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -30,17 +59,35 @@ jobs:
       - name: Install PHPMailer
         run: composer install --no-dev --working-dir=public/api
 
-      - run: npm run build
+      - name: Write robots.txt
+        run: |
+          site="${SITE_URL%/}"
+          indexing="${ALLOW_INDEXING}"
+          target="${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'production' }}"
+          if [ -z "$indexing" ] && [ "$target" = "staging" ]; then
+            indexing="false"
+          fi
+          case "$indexing" in
+            false|0|no|off)
+              printf 'User-agent: *\nDisallow: /\n' > public/robots.txt
+              ;;
+            *)
+              printf 'User-agent: *\nAllow: /\n\nDisallow: /thank-you/\nDisallow: /styleguide/\n\nSitemap: %s/sitemap-index.xml\n' "$site" > public/robots.txt
+              ;;
+          esac
+
+      - name: Build
+        run: npm run build
 
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ env.FTP_HOST }}
+          username: ${{ env.FTP_USER }}
+          password: ${{ env.FTP_PW }}
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ env.FTP_SERVER_DIR != '' && env.FTP_SERVER_DIR || './' }}
           # Keeps anything the server owns that the build does not produce.
           exclude: |
             **/.git*

@@ -92,7 +92,7 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  url: 'https://example.com',
+  url: String(import.meta.env.SITE ?? 'https://example.com').replace(/\/$/, ''),
   name: 'New Patient Group',
   legalName: 'New Patient Group',
   tagline: 'Train your team on demand. Master consumer psychology.',

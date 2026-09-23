@@ -31,6 +31,11 @@ interface Props {
   sticky?: HeaderSticky;
 }
 
+const indexingOff =
+  process.env.ALLOW_INDEXING === 'false' ||
+  process.env.ALLOW_INDEXING === '0' ||
+  process.env.ALLOW_INDEXING === 'no';
+
 const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
 ---
 
@@ -49,7 +54,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
       document.documentElement.classList.add('js');
     </script>
 
-    <SEO {...seo} />
+    <SEO {...seo} noindex={seo.noindex || indexingOff} />
     <Schema breadcrumbs={breadcrumbs} faqs={faqs} service={service} />
     <LogDash />
     {hasAnalytics && <Analytics />}

@@ -6,9 +6,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 const EXCLUDED_FROM_SITEMAP = ['/thank-you/', '/styleguide/'];
 
+const siteUrl = (process.env.SITE_URL || 'https://example.com').replace(/\/$/, '');
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: siteUrl,
   output: 'static',
   trailingSlash: 'always',
   // Keep HTML-aware whitespace from Astro 5. Astro 7 defaults to JSX rules,
