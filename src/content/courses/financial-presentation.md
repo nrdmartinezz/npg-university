@@ -6,8 +6,8 @@ enrollUrl: 'https://npguniversity.samcart.com/products/financial-presentation-co
 instructor: 'New Patient Group'
 price: 749
 featured: true
-image: '/images/home/course-financial.png'
-imageAlt: 'Treatment coordinator presenting a financial plan to a patient'
+image: '/images/home/course-financial.jpg'
+imageAlt: 'Brian Wright presenting at a practice training session'
 tracks:
   - treatment-coordinator
 positions:

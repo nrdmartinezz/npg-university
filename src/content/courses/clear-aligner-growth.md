@@ -6,8 +6,8 @@ enrollUrl: 'https://npguniversity.samcart.com/products/clear-aligner-growth-cour
 instructor: 'New Patient Group'
 price: 499
 featured: true
-image: '/images/home/course-financial.png'
-imageAlt: 'Treatment coordinator in an exam room conversation with a patient'
+image: '/images/home/course-financial.jpg'
+imageAlt: 'Brian Wright presenting at a practice training session'
 tracks:
   - treatment-coordinator
 positions:

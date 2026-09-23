@@ -6,8 +6,8 @@ enrollUrl: 'https://npguniversity.samcart.com/products/new-patient-experience-co
 instructor: 'Brian Wright, Founder & CEO'
 price: 749
 featured: true
-image: '/images/home/course-experience.png'
-imageAlt: 'Clinical team welcoming a new patient in a practice lobby'
+image: '/images/home/course-experience.jpg'
+imageAlt: 'Brian Wright teaching a room of practice team members'
 tracks:
   - new-patient-experience
 positions:

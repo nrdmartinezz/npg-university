@@ -6,8 +6,8 @@ enrollUrl: 'https://npguniversity.samcart.com/products/receptionist-phone-traini
 instructor: 'New Patient Group'
 price: 749
 featured: true
-image: '/images/home/course-phone.png'
-imageAlt: 'Front desk team member on a call in a modern orthodontic office'
+image: '/images/home/course-phone.jpg'
+imageAlt: 'Brian Wright coaching a practice team during a workshop'
 tracks:
   - receptionist
 positions:
