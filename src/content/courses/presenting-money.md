@@ -1,9 +1,9 @@
 ---
-title: "The Four Essential Steps to Presenting Money to Today’s Consumer"
-description: "Brian Wright’s treatment coordinator course on presenting fees to a consumer who decides differently than they used to."
-subtitle: "Skyrocket conversion, starts, production, revenue, cash flow, and efficiency."
-enrollUrl: "https://npguniversity.samcart.com/products/money/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'The Four Essential Steps to Presenting Money to Today’s Consumer'
+description: 'Brian Wright’s treatment coordinator course on presenting fees to a consumer who decides differently than they used to.'
+subtitle: 'Skyrocket conversion, starts, production, revenue, cash flow, and efficiency.'
+enrollUrl: 'https://npguniversity.samcart.com/products/money/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 375
 tracks:
   - treatment-coordinator
@@ -11,10 +11,10 @@ positions:
   - track: treatment-coordinator
     order: 1
 includes:
-  - "PDF printable documents you keep"
-  - "Team exercises and role plays"
-  - "Expert guidance with Brian Wright"
-  - "Keep the course forever"
+  - 'PDF printable documents you keep'
+  - 'Team exercises and role plays'
+  - 'Expert guidance with Brian Wright'
+  - 'Keep the course forever'
 ---
 
 Join Founder and CEO Brian Wright for this advanced course on presenting money. It is aimed at conversion, starts, production, revenue, cash flow, and efficiency.

@@ -1,9 +1,9 @@
 ---
-title: "The Art of Bragging"
-description: "A 75-minute course with Brian Wright on communication, hospitality, and sales skills every role in the practice can use."
-subtitle: "Advanced communication, hospitality, and sales to grow the practice."
-enrollUrl: "https://npguniversity.samcart.com/products/advanced-hospitality--sales-course-the-art-of-bragging/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'The Art of Bragging'
+description: 'A 75-minute course with Brian Wright on communication, hospitality, and sales skills every role in the practice can use.'
+subtitle: 'Advanced communication, hospitality, and sales to grow the practice.'
+enrollUrl: 'https://npguniversity.samcart.com/products/advanced-hospitality--sales-course-the-art-of-bragging/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 50
 compareAtPrice: 100
 tracks:
@@ -22,19 +22,19 @@ positions:
     order: 4
 labels:
   - track: receptionist
-    title: "The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase New Patients"
+    title: 'The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase New Patients'
   - track: new-patient-experience
-    title: "The Art of Bragging – Advanced Communication, Hospitality & Sales to Enhance the Patient Experience and Treatment Conversion"
+    title: 'The Art of Bragging – Advanced Communication, Hospitality & Sales to Enhance the Patient Experience and Treatment Conversion'
   - track: treatment-coordinator
-    title: "The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase Case Acceptance & Cash Flow"
+    title: 'The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase Case Acceptance & Cash Flow'
   - track: clinical-team
-    title: "The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase Compliance and Referrals"
+    title: 'The Art of Bragging – Advanced Communication, Hospitality & Sales to Increase Compliance and Referrals'
 includes:
-  - "Expert guidance with Founder and CEO Brian Wright"
-  - "Unlimited access — keep this course for life"
-  - "Team sales exercises"
-  - "Individual sales exercises"
-  - "4K high-definition video"
+  - 'Expert guidance with Founder and CEO Brian Wright'
+  - 'Unlimited access — keep this course for life'
+  - 'Team sales exercises'
+  - 'Individual sales exercises'
+  - '4K high-definition video'
 ---
 
 Every job in the practice can use this on-demand course with Founder and CEO Brian Wright.

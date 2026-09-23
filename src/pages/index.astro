@@ -19,7 +19,10 @@ const featured = (await getPublished())
     enrollUrl: course.data.enrollUrl,
     title: course.data.title,
     description: course.data.description,
-    department: course.data.tracks.map((id) => trackById(id)?.label).filter(Boolean).join(' · '),
+    department: course.data.tracks
+      .map((id) => trackById(id)?.label)
+      .filter(Boolean)
+      .join(' · '),
     includes: course.data.includes,
     price: course.data.price,
     image: course.data.image,

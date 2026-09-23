@@ -1,9 +1,9 @@
 ---
-title: "The Power of Going Beyond"
-description: "Brian Wright introduces a mindset shift from meeting expectations to creating patient experiences people remember, share, and advocate for."
-subtitle: "Learn to create five-star experiences that drive loyalty, referrals, and growth."
-enrollUrl: "https://npguniversity.samcart.com/products/the-power-of-going-beyond/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'The Power of Going Beyond'
+description: 'Brian Wright introduces a mindset shift from meeting expectations to creating patient experiences people remember, share, and advocate for.'
+subtitle: 'Learn to create five-star experiences that drive loyalty, referrals, and growth.'
+enrollUrl: 'https://npguniversity.samcart.com/products/the-power-of-going-beyond/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 50
 tracks:
   - leadership
@@ -23,12 +23,12 @@ positions:
   - track: clinical-team
     order: 1
 includes:
-  - "Expert guidance and insights you can apply immediately"
-  - "A breakdown of how expectations shape loyalty, referrals, and growth"
-  - "Real-world examples of going beyond"
-  - "A framework for five-star experiences across the patient journey"
-  - "Unlimited access — keep this course for life"
-  - "4K high-definition video"
+  - 'Expert guidance and insights you can apply immediately'
+  - 'A breakdown of how expectations shape loyalty, referrals, and growth'
+  - 'Real-world examples of going beyond'
+  - 'A framework for five-star experiences across the patient journey'
+  - 'Unlimited access — keep this course for life'
+  - '4K high-definition video'
 ---
 
 In a competitive environment, meeting expectations is no longer enough. Brian Wright introduces a mindset shift that asks practices to move past “good enough” and intentionally create experiences patients remember, share, and advocate for. The course covers why going beyond expectations matters for loyalty, referrals, and growth at every stage of the patient journey.

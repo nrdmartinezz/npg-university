@@ -17,8 +17,7 @@ export const tracks = [
     id: 'receptionist',
     label: 'Receptionist / Front Desk',
     nav: 'Receptionist & Hospitality',
-    description:
-      'Phone, hospitality, and new-patient conversion training for the front desk.',
+    description: 'Phone, hospitality, and new-patient conversion training for the front desk.',
   },
   {
     id: 'new-patient-experience',
@@ -38,8 +37,7 @@ export const tracks = [
     id: 'clinical-team',
     label: 'Clinical Team',
     nav: 'Clinical Team',
-    description:
-      'Compliance, communication, and chairside courses for the clinical team.',
+    description: 'Compliance, communication, and chairside courses for the clinical team.',
   },
 ] as const;
 
@@ -72,10 +70,17 @@ export function coursesInTrack(entries: CourseEntry[], track: TrackId): CourseEn
     });
 }
 
-export function relatedCourses(entries: CourseEntry[], current: CourseEntry, limit = 3): CourseEntry[] {
+export function relatedCourses(
+  entries: CourseEntry[],
+  current: CourseEntry,
+  limit = 3,
+): CourseEntry[] {
   const tracksForCurrent = new Set(current.data.tracks);
   return entries
-    .filter((entry) => entry.id !== current.id && entry.data.tracks.some((track) => tracksForCurrent.has(track)))
+    .filter(
+      (entry) =>
+        entry.id !== current.id && entry.data.tracks.some((track) => tracksForCurrent.has(track)),
+    )
     .slice(0, limit);
 }
 
@@ -97,7 +102,9 @@ export function cardHighlights(includes: string[], limit = 2): string[] {
 }
 
 export function hasLifetimeAccess(includes: string[]): boolean {
-  return includes.some((item) => /lifetime|for life|forever|keep this course|keep the course/i.test(item));
+  return includes.some((item) =>
+    /lifetime|for life|forever|keep this course|keep the course/i.test(item),
+  );
 }
 
 /** First stated length, such as "6 hours" or "53 minutes". */

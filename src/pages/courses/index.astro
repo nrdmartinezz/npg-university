@@ -20,10 +20,14 @@ const groups = tracks
   <section class="bg-[#eff4ff] px-6 py-16">
     <div class="mx-auto flex w-full max-w-[1280px] flex-col gap-6">
       <div class="max-w-3xl">
-        <p class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#006194] uppercase">
+        <p
+          class="font-display text-[11px] leading-[14px] font-bold tracking-[1.1px] text-[#006194] uppercase"
+        >
           Coaching · On-Demand Courses
         </p>
-        <h1 class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.15] font-bold tracking-[-0.8px] text-[#0f172a]">
+        <h1
+          class="font-display text-[clamp(2rem,4vw,3rem)] leading-[1.15] font-bold tracking-[-0.8px] text-[#0f172a]"
+        >
           On-Demand Courses
         </h1>
         <p class="mt-3 text-lg leading-7 text-[#64748b]">
@@ -62,44 +66,44 @@ const groups = tracks
   </section>
 
   <div id="course-results">
-  {
-    groups.map((group) => (
-      <section
-        id={group.id}
-        data-course-track={group.id}
-        class="scroll-mt-28 bg-[#f8f9ff] px-6 py-14"
-        aria-labelledby={`${group.id}-heading`}
-      >
-        <div class="mx-auto flex w-full max-w-[1280px] flex-col gap-6">
-          <div class="max-w-3xl">
-            <h2
-              id={`${group.id}-heading`}
-              class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-tight font-bold tracking-[-0.6px] text-[#0f172a]"
-            >
-              {group.label}
-            </h2>
-            <p class="mt-2 text-base leading-6 text-[#64748b]">{group.description}</p>
+    {
+      groups.map((group) => (
+        <section
+          id={group.id}
+          data-course-track={group.id}
+          class="scroll-mt-28 bg-[#f8f9ff] px-6 py-14"
+          aria-labelledby={`${group.id}-heading`}
+        >
+          <div class="mx-auto flex w-full max-w-[1280px] flex-col gap-6">
+            <div class="max-w-3xl">
+              <h2
+                id={`${group.id}-heading`}
+                class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-tight font-bold tracking-[-0.6px] text-[#0f172a]"
+              >
+                {group.label}
+              </h2>
+              <p class="mt-2 text-base leading-6 text-[#64748b]">{group.description}</p>
+            </div>
+            <ul class="grid gap-6 lg:grid-cols-2">
+              {group.courses.map((course) => (
+                <CourseCard
+                  href={`/courses/${course.id}/`}
+                  enrollUrl={course.data.enrollUrl}
+                  title={cardTitle(course, group.id)}
+                  subtitle={course.data.subtitle}
+                  instructor={course.data.instructor}
+                  price={course.data.price}
+                  compareAtPrice={course.data.compareAtPrice}
+                  featured={course.data.featured}
+                  image={course.data.image}
+                  includes={course.data.includes}
+                />
+              ))}
+            </ul>
           </div>
-          <ul class="grid gap-6 lg:grid-cols-2">
-            {group.courses.map((course) => (
-              <CourseCard
-                href={`/courses/${course.id}/`}
-                enrollUrl={course.data.enrollUrl}
-                title={cardTitle(course, group.id)}
-                subtitle={course.data.subtitle}
-                instructor={course.data.instructor}
-                price={course.data.price}
-                compareAtPrice={course.data.compareAtPrice}
-                featured={course.data.featured}
-                image={course.data.image}
-                includes={course.data.includes}
-              />
-            ))}
-          </ul>
-        </div>
-      </section>
-    ))
-  }
+        </section>
+      ))
+    }
   </div>
 </BaseLayout>
 

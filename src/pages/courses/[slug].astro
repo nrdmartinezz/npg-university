@@ -104,11 +104,12 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
                 <span class="font-display text-[32px] leading-10 font-extrabold tracking-[-0.42px] text-[#0f172a]">
                   {formatPrice(course.data.price)}
                 </span>
-                {course.data.compareAtPrice != null && course.data.compareAtPrice > course.data.price && (
-                  <span class="text-base leading-6 font-semibold text-[#64748b] line-through">
-                    {formatPrice(course.data.compareAtPrice)}
-                  </span>
-                )}
+                {course.data.compareAtPrice != null &&
+                  course.data.compareAtPrice > course.data.price && (
+                    <span class="text-base leading-6 font-semibold text-[#64748b] line-through">
+                      {formatPrice(course.data.compareAtPrice)}
+                    </span>
+                  )}
               </p>
             )
           }

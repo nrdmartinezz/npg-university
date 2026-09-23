@@ -1,9 +1,9 @@
 ---
-title: "The Power of Being First – Transform your Brand by Becoming a Category Creator"
-description: "A 15-minute leadership course with Brian Wright on becoming the most memorable brand in your community by creating the category."
-subtitle: "Dominate by becoming the category creator."
-enrollUrl: "https://npguniversity.samcart.com/products/the-power-of-being-first---becoming-a-category-creator/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'The Power of Being First – Transform your Brand by Becoming a Category Creator'
+description: 'A 15-minute leadership course with Brian Wright on becoming the most memorable brand in your community by creating the category.'
+subtitle: 'Dominate by becoming the category creator.'
+enrollUrl: 'https://npguniversity.samcart.com/products/the-power-of-being-first---becoming-a-category-creator/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 25
 compareAtPrice: 50
 tracks:
@@ -12,12 +12,12 @@ positions:
   - track: leadership
     order: 5
 includes:
-  - "Expert guidance with Founder and CEO Brian Wright"
-  - "Unlimited access — keep this course for life"
-  - "Team leadership exercises"
-  - "Leadership lessons on category creation"
-  - "How well-known companies dominate their industry"
-  - "4K high-definition video"
+  - 'Expert guidance with Founder and CEO Brian Wright'
+  - 'Unlimited access — keep this course for life'
+  - 'Team leadership exercises'
+  - 'Leadership lessons on category creation'
+  - 'How well-known companies dominate their industry'
+  - '4K high-definition video'
 ---
 
 Join Founder and CEO Brian Wright for this on-demand leadership course for every position in the office.

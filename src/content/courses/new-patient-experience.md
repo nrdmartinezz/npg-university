@@ -1,25 +1,25 @@
 ---
-title: "New Patient Immersive Experience"
-description: "Nearly 6 hours with Brian Wright on sales, presentation, customer service, and the new patient visit."
-subtitle: "Go beyond new patient expectations and increase conversions and referrals."
-enrollUrl: "https://npguniversity.samcart.com/products/new-patient-experience-course-paid-in-full/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'New Patient Immersive Experience'
+description: 'Nearly 6 hours with Brian Wright on sales, presentation, customer service, and the new patient visit.'
+subtitle: 'Go beyond new patient expectations and increase conversions and referrals.'
+enrollUrl: 'https://npguniversity.samcart.com/products/new-patient-experience-course-paid-in-full/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 749
 featured: true
-image: "/images/home/course-experience.png"
-imageAlt: "Clinical team welcoming a new patient in a practice lobby"
+image: '/images/home/course-experience.png'
+imageAlt: 'Clinical team welcoming a new patient in a practice lobby'
 tracks:
   - new-patient-experience
 positions:
   - track: new-patient-experience
     order: 1
 includes:
-  - "Over 6 hours of on-demand training videos you keep forever"
-  - "Full access on any internet-connected device"
-  - "More than 6 printable scripts and flowcharts"
-  - "Online testing for team accountability"
-  - "3 private online coaching sessions for your practice and team"
-  - "Courses update when new content is added"
+  - 'Over 6 hours of on-demand training videos you keep forever'
+  - 'Full access on any internet-connected device'
+  - 'More than 6 printable scripts and flowcharts'
+  - 'Online testing for team accountability'
+  - '3 private online coaching sessions for your practice and team'
+  - 'Courses update when new content is added'
 ---
 
 Orthodontic and dental practices compete for patients who have more options than ever. This course is about standing out by making a real connection and creating a wow experience through the team’s intentional work.

@@ -1,9 +1,9 @@
 ---
-title: "Conflict Resolution – Turning Patient Complaints into Five Star Reviews"
-description: "A one-hour course with Brian Wright on six steps that turn patient complaints into positive outcomes and five-star reviews."
-subtitle: "Six steps to conflict resolution."
-enrollUrl: "https://npguniversity.samcart.com/products/conflict-resolution---six-steps-to-turn-patient-complaints-into-five-star-reviews/"
-instructor: "Brian Wright, Founder & CEO"
+title: 'Conflict Resolution – Turning Patient Complaints into Five Star Reviews'
+description: 'A one-hour course with Brian Wright on six steps that turn patient complaints into positive outcomes and five-star reviews.'
+subtitle: 'Six steps to conflict resolution.'
+enrollUrl: 'https://npguniversity.samcart.com/products/conflict-resolution---six-steps-to-turn-patient-complaints-into-five-star-reviews/'
+instructor: 'Brian Wright, Founder & CEO'
 price: 25
 compareAtPrice: 75
 tracks:
@@ -21,11 +21,11 @@ positions:
   - track: clinical-team
     order: 6
 includes:
-  - "Expert guidance with Founder and CEO Brian Wright"
-  - "Unlimited access — keep this course for life"
-  - "Team sales exercises"
-  - "Training on consumer psychology, hospitality, and sales"
-  - "4K high-definition video"
+  - 'Expert guidance with Founder and CEO Brian Wright'
+  - 'Unlimited access — keep this course for life'
+  - 'Team sales exercises'
+  - 'Training on consumer psychology, hospitality, and sales'
+  - '4K high-definition video'
 ---
 
 Join Founder and CEO Brian Wright for a course on the team’s language and presentation when a patient complains. The promise of the course is to turn complaints into five-star reviews.

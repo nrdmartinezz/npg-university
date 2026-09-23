@@ -95,7 +95,11 @@ const { courses } = Astro.props;
                     {course.includes.slice(0, 4).map((item) => (
                       <li class="flex items-start gap-2 text-sm leading-6 text-[#0f172a]">
                         <span class="mt-1.5">
-                          <Glyph src="/images/home/icon-check-course.svg" width={12.225} height={9.019} />
+                          <Glyph
+                            src="/images/home/icon-check-course.svg"
+                            width={12.225}
+                            height={9.019}
+                          />
                         </span>
                         <span>{item}</span>
                       </li>

@@ -1,25 +1,25 @@
 ---
-title: "Financial Presentation University"
-description: "Over 5 hours for treatment coordinators on how today’s consumer makes buying decisions, and how to present fees so conversion and cash flow rise."
-subtitle: "Transform your TC into a financial presentation expert."
-enrollUrl: "https://npguniversity.samcart.com/products/financial-presentation-course-paid-in-full/"
-instructor: "New Patient Group"
+title: 'Financial Presentation University'
+description: 'Over 5 hours for treatment coordinators on how today’s consumer makes buying decisions, and how to present fees so conversion and cash flow rise.'
+subtitle: 'Transform your TC into a financial presentation expert.'
+enrollUrl: 'https://npguniversity.samcart.com/products/financial-presentation-course-paid-in-full/'
+instructor: 'New Patient Group'
 price: 749
 featured: true
-image: "/images/home/course-financial.png"
-imageAlt: "Treatment coordinator presenting a financial plan to a patient"
+image: '/images/home/course-financial.png'
+imageAlt: 'Treatment coordinator presenting a financial plan to a patient'
 tracks:
   - treatment-coordinator
 positions:
   - track: treatment-coordinator
     order: 2
 includes:
-  - "Over 5 hours of on-demand content"
-  - "Access on any internet-accessible device"
-  - "Three printable scripts and flowcharts"
-  - "Online testing and progress tracking"
-  - "Role play exercises"
-  - "Lifetime access — yours to keep forever"
+  - 'Over 5 hours of on-demand content'
+  - 'Access on any internet-accessible device'
+  - 'Three printable scripts and flowcharts'
+  - 'Online testing and progress tracking'
+  - 'Role play exercises'
+  - 'Lifetime access — yours to keep forever'
 ---
 
 Skyrocket revenue and profitability. Start more cases, grow cash flow, and increase same-day starts.
