@@ -120,6 +120,12 @@ export function courseDuration(includes: string[]): string | null {
   return null;
 }
 
+/** Course name before the subtitle dash, for the breadcrumb bar. */
+export function breadcrumbLabel(title: string): string {
+  const [lead] = title.split(/\s+[–—-]\s+/);
+  return lead.trim();
+}
+
 export function savingsPercent(price?: number, compareAt?: number): number | null {
   if (price == null || compareAt == null || compareAt <= price) return null;
   return Math.round(((compareAt - price) / compareAt) * 100);

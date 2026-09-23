@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Prose from '../../components/ui/Prose.astro';
 import Glyph from '../../components/home/Glyph.astro';
 import {
+  breadcrumbLabel,
   courseDuration,
   formatPrice,
   getPublished,
@@ -47,7 +48,11 @@ const savings = savingsPercent(course.data.price, course.data.compareAtPrice);
     ...(primaryTrack
       ? [{ name: primaryTrack.nav, href: `/courses/#${primaryTrack.id}` }]
       : []),
-    { name: course.data.title, href: `/courses/${course.id}/` },
+    {
+      name: course.data.title,
+      label: breadcrumbLabel(course.data.title),
+      href: `/courses/${course.id}/`,
+    },
   ]}
 >
   <section class="bg-[#eff4ff] px-6 py-14 sm:py-16">

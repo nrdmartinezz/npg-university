@@ -2,6 +2,7 @@
 interface Crumb {
   name: string;
   href: string;
+  label?: string;
 }
 
 interface Props {
@@ -13,19 +14,22 @@ const { items } = Astro.props;
 
 <nav aria-label="Breadcrumb" class="bg-[#0b132b] text-[#f8f9ff]">
   <ol
-    class="mx-auto flex w-full max-w-[1280px] items-center overflow-x-auto px-6 py-2.5 font-display text-[13px] leading-[18px] whitespace-nowrap"
+    class="mx-auto flex w-full max-w-[1280px] items-center overflow-hidden px-6 py-2.5 font-display text-[13px] leading-[18px] whitespace-nowrap"
   >
     {
-      items.map((item, index) => (
-        <li class="inline-flex items-center">
+      items.map((item, index) => {
+        const current = index === items.length - 1;
+        const text = item.label ?? item.name;
+        return (
+        <li class:list={['inline-flex items-center', current ? 'min-w-0' : 'shrink-0']}>
           {index > 0 && (
             <span class="px-2 text-[#94a3b8]" aria-hidden="true">
               /
             </span>
           )}
-          {index === items.length - 1 ? (
-            <span aria-current="page" class="font-semibold text-white">
-              {item.name}
+          {current ? (
+            <span aria-current="page" class="truncate font-semibold text-white" title={item.name}>
+              {text}
             </span>
           ) : (
             <a
@@ -50,11 +54,12 @@ const { items } = Astro.props;
                   />
                 </svg>
               )}
-              {item.name}
+              {text}
             </a>
           )}
         </li>
-      ))
+        );
+      })
     }
   </ol>
 </nav>

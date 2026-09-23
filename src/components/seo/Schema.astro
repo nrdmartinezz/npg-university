@@ -2,8 +2,11 @@
 import { site } from '../../config/site';
 
 export interface BreadcrumbEntry {
+  /** Full name used in breadcrumb structured data. */
   name: string;
   href: string;
+  /** Shorter label for the visible bar. Schema still uses `name`. */
+  label?: string;
 }
 
 export interface FaqEntry {
